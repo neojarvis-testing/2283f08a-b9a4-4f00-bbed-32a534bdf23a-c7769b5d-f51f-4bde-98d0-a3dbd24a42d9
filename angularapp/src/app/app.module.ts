@@ -8,7 +8,6 @@ import { AdminaddworkoutComponent } from './components/adminaddworkout/adminaddw
 import { AdmineditworkoutComponent } from './components/admineditworkout/admineditworkout.component';
 import { AdminnavComponent } from './components/adminnav/adminnav.component';
 import { AdminviewworkoutComponent } from './components/adminviewworkout/adminviewworkout.component';
-import { AuthguardComponent } from './components/authguard/authguard.component';
 import { ErrorComponent } from './components/error/error.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { RequestedworkoutComponent } from './components/requestedworkout/requestedworkout.component';
@@ -26,7 +25,6 @@ import { UserworkoutformComponent } from './components/userworkoutform/userworko
     AdmineditworkoutComponent,
     AdminnavComponent,
     AdminviewworkoutComponent,
-    AuthguardComponent,
     ErrorComponent,
     HomePageComponent,
     RequestedworkoutComponent,
