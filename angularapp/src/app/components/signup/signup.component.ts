@@ -44,7 +44,13 @@ export class SignupComponent implements OnInit {
       confirmPassword: this.signupForm.value.confirmpassword,
       role: this.signupForm.value.role,
     };
+<<<<<<< HEAD
+
     this.authService.signup(userData).subscribe();
+
+=======
+    this.authService.signup(userData).subscribe();
+>>>>>>> main
   }
 
 
