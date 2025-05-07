@@ -1,1 +1,51 @@
+.navbar-custom {
+  background: linear-gradient(to right, #5e0a82, #65422ff6, #31784e,#065828);
+}
 
+.admin-pill {
+  border: 2px solid white;
+  color: white;
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 15px;
+  background: transparent;
+}
+
+.logout-btn {
+  background-color: #e74c3c;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.logout-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Hover-enabled dropdown */
+.hover-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  margin-top: 0;
+  border-radius: 0;
+}
+
+.workout-menu {
+  display: none;
+  top: 100%; /* show right below the link */
+  left: 50%;
+  transform:translateX(-50%);
+  min-width: 150px;
+  z-index: 1000;
+}
+
+/* Show the menu when hovered */
+.workout-hover:hover .workout-menu {
+  display: block;
+}
+
+.workout-menu a:hover {
+  background-color: #f0f0f0;
+}
