@@ -33,6 +33,11 @@ mongoose
   });
   
   app.use("/user", userRouter);
+<<<<<<< HEAD
+  app.use('/workoutsRequests',workoutRequestRouter)
+  app.use("/workouts", workoutRouter);
+=======
   // app.use("/workoutRequests",workoutRequestRouter);
   // app.use("/workouts", workoutRouter);
+>>>>>>> main
 

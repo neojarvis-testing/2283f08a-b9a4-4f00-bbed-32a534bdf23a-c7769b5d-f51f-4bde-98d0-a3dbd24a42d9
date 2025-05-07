@@ -11,7 +11,11 @@ async function getUserByEmailAndPassword(req, res) {
         if (user) {
             const token = generateToken(user._id);
             const response = {
+<<<<<<< HEAD
+                id:user_id,
+=======
                 id:user._id,
+>>>>>>> main
                 userName: user.userName,
                 role: user.role,
                 token: token,
