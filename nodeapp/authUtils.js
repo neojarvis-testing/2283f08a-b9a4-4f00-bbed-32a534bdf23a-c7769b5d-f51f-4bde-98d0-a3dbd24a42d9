@@ -10,7 +10,7 @@ function generateToken(userId) {
 
 // Middleware function to validate JWT token
 function validateToken(req, res, next) {
-    const token = req.headers['authorization'];
+    const token = req.header('authorization');
     if (!token) {
         return res.status(400).json({ message: 'Authentication failed!' });
     }
