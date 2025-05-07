@@ -1,30 +1,32 @@
-<app-adminnav></app-adminnav>
-<div class="position-relative">
-  <img src="https://tinyurl.com/2efhkpjz" 
-       alt="FitnessApp Banner" 
-       class="img-fluid w-100" 
-       style="height: 330px; object-fit: cover">
+<ng-container *ngIf="checkUserRole()">
+  <app-adminnav *ngIf="isAdmin"></app-adminnav>
+  <app-usernav *ngIf="isUser"></app-usernav>
+</ng-container>
 
- <div class="position-absolute top-50 w-100 translate-middle-y bg-white bg-opacity-75 py-2">
-  <h2 class="text-center text-black m-0 fw-bold">FitnessApp</h2>
-</div>
+<div class="position-relative">
+  <img src="https://tinyurl.com/2efhkpjz" alt="FitnessApp Banner" class="img-fluid w-100"
+    style="height: 330px; object-fit: cover">
+
+  <div class="position-absolute top-50 w-100 translate-middle-y bg-white bg-opacity-75 py-2">
+    <h2 class="text-center text-black m-0 fw-bold">FitnessApp</h2>
+  </div>
 </div>
 
 <!-- FitnessApp Description -->
 <div class="container my-3">
-<div class="card mx-auto bg-light opacity-75" style="max-width: 600px;">
-  <div class="card-body text-center"> 
-    <p class="card-text small">
-      Achieve your fitness goals with FitnessApp! Our platform provides personalized workout plans,
-      nutrition tracking, and progress monitoring to keep you motivated. Join today and take the next step
-      towards a healthier, stronger you.
-    </p>
-   </div> 
-</div>
+  <div class="card mx-auto bg-light opacity-75" style="max-width: 600px;">
+    <div class="card-body text-center">
+      <p class="card-text small">
+        Achieve your fitness goals with FitnessApp! Our platform provides personalized workout plans,
+        nutrition tracking, and progress monitoring to keep you motivated. Join today and take the next step
+        towards a healthier, stronger you.
+      </p>
+    </div>
+  </div>
 </div>
 
 <!-- Contact Us Section -->
 <div class="bg-dark text-white py-3 text-center w-100">
-<h4 class="mb-2">Contact Us</h4>
-<p class="mb-0 small">Phone: 123-456-7890</p>
+  <h4 class="mb-2">Contact Us</h4>
+  <p class="mb-0 small">Phone: 123-456-7890</p>
 </div>
