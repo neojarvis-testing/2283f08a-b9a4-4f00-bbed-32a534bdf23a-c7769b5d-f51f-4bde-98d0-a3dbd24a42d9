@@ -16,7 +16,7 @@ import { UserappliedworkoutComponent } from './components/userappliedworkout/use
 import { UsernavComponent } from './components/usernav/usernav.component';
 import { UserviewworkoutComponent } from './components/userviewworkout/userviewworkout.component';
 import { UserworkoutformComponent } from './components/userworkoutform/userworkoutform.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
