@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' })); // Set a suitabl
 app.use(express.urlencoded({ extended: true }));
 const cors = require("cors"); // Import the cors package
 const corsOptions = {
-  origin: "*", // Replace with the URL of your frontend application
+  origin: "https://8081-eacbcaeabdfdcaebfcecdacbdffbdedadbdad.premiumproject.examly.io", // Replace with the URL of your frontend application
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   preflightContinue: false,
   optionsSuccessStatus: 204,
@@ -33,6 +33,6 @@ mongoose
   });
   
   app.use("/user", userRouter);
-  app.use("/workoutRequests",workoutRequestRouter);
-  app.use("/workouts", workoutRouter);
+  // app.use("/workoutRequests",workoutRequestRouter);
+  // app.use("/workouts", workoutRouter);
 
