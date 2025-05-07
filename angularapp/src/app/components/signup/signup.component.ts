@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -6,10 +8,37 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  signupForm: FormGroup;
+  submitted = false;
+  signupError = '';
+  constructor(private fb: FormBuilder, private router: Router) {
+    this.signupForm = this.fb.group({
+      userName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      mobile: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required],
+      role: ['', Validators.required]
+    },{ validator: this.matchPasswords })
 
-  constructor() { }
+  }
+  get f() {
+    return this.signupForm.controls;
+  }
+  matchPasswords(group: FormGroup) {
+    const password = group.get('password')?.value;
+    const confirmPassword = group.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { passwordMismatch: true };
+  }
+  onSubmit() {
+    this.submitted = true;
+    if (this.signupForm.invalid) return;
+  }
+
+
 
   ngOnInit(): void {
   }
+
 
 }
