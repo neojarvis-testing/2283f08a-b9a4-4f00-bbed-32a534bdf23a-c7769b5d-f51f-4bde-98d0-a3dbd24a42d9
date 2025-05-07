@@ -37,7 +37,7 @@ export class SignupComponent implements OnInit {
     this.submitted = true;
     if (this.signupForm.invalid) return;
     const userData: User = {
-      userName: this.signupForm.value.username,
+      userName: this.signupForm.value.userName,
       email: this.signupForm.value.email,
       mobile: this.signupForm.value.mobile,
       password: this.signupForm.value.password,
@@ -45,16 +45,7 @@ export class SignupComponent implements OnInit {
       role: this.signupForm.value.role,
     };
 
-    this.authService.signup(userData).subscribe({
-      next: () => {
-        alert('User Registration is Successful!');
-        this.router.navigate(['/login']);
-      },
-      error: (error) => {
-        console.error('Registration failed:', error);
-        alert('Registration failed. Please try again.');
-      }
-    });
+    this.authService.signup(userData).subscribe();
 
   }
 
