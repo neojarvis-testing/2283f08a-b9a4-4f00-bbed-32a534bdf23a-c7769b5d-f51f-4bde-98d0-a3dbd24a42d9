@@ -17,7 +17,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'adminaddworkout',component:AdminaddworkoutComponent},
-  {path:'admineditworkout',component:AdmineditworkoutComponent},
+  {path:'admineditworkout/:id',component:AdmineditworkoutComponent},
   {path:'adminviewworkout',component:AdminviewworkoutComponent},
   {path:'requestedworkout',component:RequestedworkoutComponent},
   {path:'userappliedworkout/:id',component:UserappliedworkoutComponent},

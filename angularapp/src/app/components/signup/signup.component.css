@@ -2,7 +2,10 @@
     object-fit: cover;
 }
 .modal-dialog{
-    width: 300px;
+    width: 350px;
+}
+.ok-btn{
+    width:60px;
 }
 .fitness-heading {
     font-size: 2.5rem;
