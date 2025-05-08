@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
+import * as bootstrap from 'bootstrap';
 
 @Component({
   selector: 'app-signup',
@@ -13,13 +14,12 @@ export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
   submitted = false;
-  signupError = '';
   constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) {
     this.signupForm = this.fb.group({
       userName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.pattern('^[a-z][a-zA-Z0-9._%+-]{0,63}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]],
+      email: ['', [Validators.required, Validators.pattern('^[a-z][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]],
       mobile: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$')]],
       confirmPassword: ['', Validators.required],
       role: ['', Validators.required]
     }, { validator: this.matchPasswords })
@@ -36,6 +36,7 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.signupForm.invalid) return;
+    this.showSuccessModal()
     const userData: User = {
       userName: this.signupForm.value.userName,
       email: this.signupForm.value.email,
@@ -44,15 +45,12 @@ export class SignupComponent implements OnInit {
       confirmPassword: this.signupForm.value.confirmpassword,
       role: this.signupForm.value.role,
     };
-<<<<<<< HEAD
-
     this.authService.signup(userData).subscribe();
-
-=======
-    this.authService.signup(userData).subscribe();
->>>>>>> main
   }
-
+  showSuccessModal(){
+    const modal= new bootstrap.Modal(document.getElementById('successModal')!);
+    modal.show();
+  }
 
 
   ngOnInit(): void {
