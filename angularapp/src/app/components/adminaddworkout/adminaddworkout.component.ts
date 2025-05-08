@@ -52,3 +52,4 @@ export class AdminaddworkoutComponent implements OnInit {
   }
 
 }
+
