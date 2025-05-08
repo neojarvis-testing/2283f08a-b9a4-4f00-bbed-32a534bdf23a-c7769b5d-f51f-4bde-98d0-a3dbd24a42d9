@@ -22,7 +22,7 @@ export class AdmineditworkoutComponent implements OnInit {
       description: ['', Validators.required],
       difficultyLevel: [0, Validators.required],
       targetArea: ['', Validators.required],
-      daysPerWeek: [0, Validators.required,this.daysPerWeekValidator],
+      daysPerWeek: [0, [Validators.required,this.daysPerWeekValidator]],
       averageWorkoutDurationInMinutes: [0, Validators.required]
     });
   }
