@@ -14,8 +14,8 @@ export class RequestedworkoutComponent implements OnInit {
   selectedWorkout: Workoutrequest | null = null;
   filterStatus: string = '';
   searchTerm: string = '';
-
-  constructor(private workoutService: WorkoutrequestService) {}
+  
+  constructor(private workoutService: WorkoutrequestService) { }
 
   ngOnInit(): void {
     this.fetchAllWorkouts();
@@ -43,16 +43,29 @@ export class RequestedworkoutComponent implements OnInit {
   }
 
   approveRequest(id: string): void {
+    const request = this.filteredRequests.find(r => r._id === id);
+    if (request) {
+      request.requestStatus = 'Approved'; // Update locally for UI
+    }
+  
     this.workoutService.updateWorkoutStatus(id, { requestStatus: 'Approved' } as Workoutrequest).subscribe(() => {
-      this.fetchAllWorkouts();
+      this.fetchAllWorkouts(); // Refresh from backend
     });
   }
-
+  
   rejectRequest(id: string): void {
+    const request = this.filteredRequests.find(r => r._id === id);
+    if (request) {
+      request.requestStatus = 'Rejected'; // Update locally for UI
+    }
+  
     this.workoutService.updateWorkoutStatus(id, { requestStatus: 'Rejected' } as Workoutrequest).subscribe(() => {
-      this.fetchAllWorkouts();
+      this.fetchAllWorkouts(); // Refresh from backend
     });
   }
+  
+  
+
 
   showDetails(workout: Workoutrequest): void {
     this.selectedWorkout = workout;
