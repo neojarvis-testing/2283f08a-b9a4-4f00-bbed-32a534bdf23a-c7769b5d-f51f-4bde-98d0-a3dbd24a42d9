@@ -23,8 +23,8 @@ const routes: Routes = [
   {path:'userappliedworkout/:id',component:UserappliedworkoutComponent},
   {path:'userviewworkout/:id',component:UserviewworkoutComponent},
   {path:'userworkoutform/:id',component:UserworkoutformComponent},
-  {path:'**',component:ErrorComponent},
-  {path:'',redirectTo:'/login',pathMatch:'full'}
+  {path:'',redirectTo:'/login',pathMatch:'full'},
+  {path:'**',component:ErrorComponent}
 ];
 
 @NgModule({
