@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class WorkoutService {
   constructor(private http:HttpClient) { }
-  addWorkout(workout: any): Observable<any> {
+addWorkout(workout: any): Observable<any> {
     return this.http.post(`${environment.backendUrl}/workouts`, workout);
   }
   getAllWorkouts(): Observable<any[]> {

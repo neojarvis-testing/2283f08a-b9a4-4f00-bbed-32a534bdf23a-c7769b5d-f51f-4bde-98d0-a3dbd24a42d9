@@ -12,9 +12,9 @@ const cors = require("cors"); // Import the cors package
 const corsOptions = {
   origin: "*", // Replace with the URL of your frontend application
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
   allowedHeaders: "Content-Type,Authorization",
+  exposedHeaders: "Content-Type,X-Powered-By",
+  credentials: true
 };
 
 
