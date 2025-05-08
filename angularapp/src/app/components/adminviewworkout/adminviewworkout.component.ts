@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Workout } from 'src/app/models/workout.model';
 import { WorkoutService } from 'src/app/services/workout.service';
+declare var bootstrap:any;
 
 @Component({
   selector: 'app-adminviewworkout',
@@ -8,9 +9,10 @@ import { WorkoutService } from 'src/app/services/workout.service';
   styleUrls: ['./adminviewworkout.component.css']
 })
 export class AdminviewworkoutComponent implements OnInit {
-  workouts: any[] = [];
-  filteredWorkouts: any[] = [];
+  workouts: Workout[] = [];
+  filteredWorkouts: Workout[] = [];
   searchTerm: string = '';
+  selectedWorkoutId:string|null=null;
 
   columnSettings = [
     { key: 'name', label: 'Workout Name', visible: true },
@@ -23,20 +25,46 @@ export class AdminviewworkoutComponent implements OnInit {
     { key: 'action', label: 'Action', visible: true }
   ];
 
-  constructor(private http: HttpClient) {}
+  constructor(private workoutService: WorkoutService) {}
 
   ngOnInit(): void {
     this.getWorkouts();
   }
 
   getWorkouts(): void {
-    this.http.get<any[]>('http://localhost:8080/workouts').subscribe({
-      next: (data) => {
-        this.workouts = data;
-        this.filteredWorkouts = data;
+   this.workoutService.getAllWorkouts().subscribe({
+    next:(data)=>{
+      console.log('Fetched workouts:',data);
+      this.workouts=data;
+      this.filteredWorkouts=data
+    },
+    error: (err)=>{
+      console.error('Failed to fetch workouts',err);
+    }
+   })
+  }
+  openDeleteModal(id:string):void{
+    this.selectedWorkoutId=id;
+    const modalElement=document.getElementById('deleteModal');
+    if(modalElement){
+      const modal=new bootstrap.Modal(modalElement);
+      modal.show();
+    }
+  }
+  confirmDelete(): void {
+    if (!this.selectedWorkoutId) return;
+
+    this.workoutService.deleteWorkout(this.selectedWorkoutId).subscribe({
+      next: () => {
+        this.workouts = this.workouts.filter(w => w._id !== this.selectedWorkoutId);
+        this.filteredWorkouts = this.workouts;
+        this.selectedWorkoutId = null;
+        const modal = bootstrap.Modal.getInstance(document.getElementById('deleteModal'));
+        modal?.hide();
       },
       error: (err) => {
-        console.error('Failed to fetch workouts', err);
+        console.error('Delete error:', err);
+        alert('Failed to delete workout.');
       }
     });
   }
@@ -44,23 +72,14 @@ export class AdminviewworkoutComponent implements OnInit {
   search(): void {
     const term = this.searchTerm.toLowerCase();
     this.filteredWorkouts = this.workouts.filter(workout =>
-      workout.name.toLowerCase().includes(term) ||
+      workout.workoutName.toLowerCase().includes(term) ||
       workout.description.toLowerCase().includes(term)
     );
   }
 
-  applyFilter(level: string): void {
-    if (level === 'All') {
-      this.filteredWorkouts = [...this.workouts];
-    } else {
-      this.filteredWorkouts = this.workouts.filter(w => w.difficultyLevel === level);
-    }
-  }
+ 
 
-  deleteWorkout(id: string): void {
-    // Add actual delete API call if needed
-    this.filteredWorkouts = this.filteredWorkouts.filter(w => w._id !== id);
-  }
+  
 
   isColumnVisible(key: string): boolean {
     return this.columnSettings.find(col => col.key === key)?.visible || false;
