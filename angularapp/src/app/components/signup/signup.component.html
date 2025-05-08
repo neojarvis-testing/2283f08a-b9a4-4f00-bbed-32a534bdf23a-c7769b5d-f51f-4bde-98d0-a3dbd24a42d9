@@ -22,25 +22,25 @@
                         <input type="email" id="email" formControlName="email" class="custom-input"
                             placeholder="Email" [ngClass]="{'is-invalid':submitted && f.email.errors}">
                         <div class="invalid-feedback" *ngIf="(submitted || f.email.touched) && f.email.errors?.required">Email is required</div>
-                        <div class="invalid-feedback" *ngIf="(submitted || f.email.touched) && f.email.errors?.email">Enter a valid email</div>
+                        <div class="invalid-feedback" *ngIf="(submitted || f.email.touched || f.email.dirty) && f.email.errors?.pattern">Please enter a valid email</div>
                     </div>
                     <div class="mb-4">
                         <input type="tel" id="mobile" formControlName="mobile" class="custom-input"
                             placeholder="Mobile" [ngClass]="{'is-invalid':submitted && f.mobile.errors}">
                         <div class="invalid-feedback" *ngIf="(submitted || f.mobile.touched) && f.mobile.errors?.required">Mobile Number is required</div>
-                        <div class="invalid-feedback" *ngIf="(submitted || f.mobile.touched) && f.mobile.errors?.pattern">Mobile number must be 10 digits</div>
+                        <div class="invalid-feedback" *ngIf="(submitted || f.mobile.touched || f.mobile.dirty) && f.mobile.errors?.pattern">Mobile number must be 10 digits</div>
                     </div>
                     <div class="mb-4">
                         <input type="password" id="password" formControlName="password" class="custom-input"
                             placeholder="Password" [ngClass]="{'is-invalid':submitted && f.password.errors}">
                         <div class="invalid-feedback" *ngIf="(submitted || f.password.touched) && f.password.errors?.required">Password is required</div>
-                        <div class="invalid-feedback" *ngIf="(submitted || f.password.touched) && f.password.errors?.minlength">Password must be at least 6 characters</div>
+                        <div class="invalid-feedback" *ngIf="(submitted || f.password.touched || f.password.dirty) && f.password.errors?.pattern">Password must be at least 6 characters and Strong</div>
                     </div>
                     <div class="mb-4">
                         <input type="password" id="confirmPassword" formControlName="confirmPassword" class="custom-input"
                             placeholder="Confirm Password" [ngClass]="{'is-invalid':submitted && f.confirmPassword.errors}">
                         <div class="invalid-feedback" *ngIf="(submitted || f.confirmPassword.touched) && f.confirmPassword.errors?.required">Confirm Password is required</div>
-                        <div class="invalid-feedback" *ngIf="(submitted || f.confirmPassword.touched) && signupForm.errors?.passwordMismatch">Password do not match</div>
+                        <div class="invalid-feedback" *ngIf="(submitted || f.confirmPassword.touched || f.confirmPassword.dirty) && signupForm.errors?.passwordMismatch">Password do not match</div>
                     </div>
                     <div class="mb-4">
                         <select name="role" id="role" formControlName="role" class="custom-select">
@@ -50,9 +50,8 @@
                         </select>
                     </div>
                     <div class="d-flex justify-content-center mb-3">
-                        <button type="submit" class="signup-btn" [disabled]="signupForm.invalid" data-bs-toggle="modal" data-bs-target="#successModal" >Signup</button>
+                        <button type="submit" class="signup-btn">Signup</button>
                     </div>
-                    <div *ngIf="signupError" class="alert alert-danger mt-3">{{loginError}}</div>
                     <div class="text-center mt-4">
                         <span>Already have an account? </span>
                         <a routerLink="/login" class="fw-bold text-decoration-none">Login</a>
@@ -66,11 +65,9 @@
 <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered ">
         <div class="modal-content">
-            <div class="modal-body d-flex flex-column justify-content-center align-items-center">
-                <p>User Registration is Successful!</p>
-                <div>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" routerLink="/login">Ok</button>
-                </div>
+            <div class="modal-body text-center">
+                <p class="mb-4 fs-5">User Registration is Successful!</p>
+                <button class="btn btn-primary ok-btn" data-bs-dismiss="modal" routerLink="/login">Ok</button>
             </div>
         </div>
     </div>

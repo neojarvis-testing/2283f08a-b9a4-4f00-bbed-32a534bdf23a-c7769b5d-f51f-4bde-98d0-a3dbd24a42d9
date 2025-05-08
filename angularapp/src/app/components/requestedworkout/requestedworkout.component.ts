@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { WorkoutrequestService } from 'src/app/services/workoutrequest.service';
+import { Workoutrequest } from 'src/app/models/workoutrequest.model';
+import * as bootstrap from 'bootstrap';
 
 @Component({
   selector: 'app-requestedworkout',
@@ -6,10 +9,54 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./requestedworkout.component.css']
 })
 export class RequestedworkoutComponent implements OnInit {
+  workoutRequests: Workoutrequest[] = [];
+  filteredRequests: Workoutrequest[] = [];
+  selectedWorkout: Workoutrequest | null = null;
+  filterStatus: string = '';
+  searchTerm: string = '';
 
-  constructor() { }
+  constructor(private workoutService: WorkoutrequestService) {}
 
   ngOnInit(): void {
+    this.fetchAllWorkouts();
   }
 
+  fetchAllWorkouts(): void {
+    this.workoutService.getAllWorkoutRequests().subscribe({
+      next: (data) => {
+        this.workoutRequests = data;
+        this.filteredRequests = data;
+      },
+      error: (err) => {
+        console.error('Error fetching all workout requests:', err);
+      }
+    });
+  }
+
+  applyFilters(): void {
+    this.filteredRequests = this.workoutRequests.filter(w =>
+      (!this.filterStatus || w.requestStatus === this.filterStatus) &&
+      (!this.searchTerm ||
+        w.userId?.userName?.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        w.workoutId?.workoutName?.toLowerCase().includes(this.searchTerm.toLowerCase()))
+    );
+  }
+
+  approveRequest(id: string): void {
+    this.workoutService.updateWorkoutStatus(id, { requestStatus: 'Approved' } as Workoutrequest).subscribe(() => {
+      this.fetchAllWorkouts();
+    });
+  }
+
+  rejectRequest(id: string): void {
+    this.workoutService.updateWorkoutStatus(id, { requestStatus: 'Rejected' } as Workoutrequest).subscribe(() => {
+      this.fetchAllWorkouts();
+    });
+  }
+
+  showDetails(workout: Workoutrequest): void {
+    this.selectedWorkout = workout;
+    const modal = new bootstrap.Modal(document.getElementById('detailsModal')!);
+    modal.show();
+  }
 }

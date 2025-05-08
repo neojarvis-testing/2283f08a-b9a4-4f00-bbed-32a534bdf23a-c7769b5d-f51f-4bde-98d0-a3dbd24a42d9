@@ -31,7 +31,9 @@
   margin-top: 0;
   border-radius: 0;
 }
-
+.modal-dialog{
+  width: 350px;
+}
 .workout-menu {
   display: none;
   top: 100%; /* show right below the link */

@@ -14,11 +14,25 @@
         </div>
     </li>
       <li class="nav-item me-3">
-        <a class="nav-link text-white" href="#" routerLink="/requestedworkout">Workout Requested</a>
+        <a class="nav-link text-white" routerLink="/requestedworkout">Workout Requested</a>
       </li>
       <li class="nav-item">
-        <button class="btn btn-danger">Logout</button>
+        <button class="btn btn-danger logout-btn" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</button>
       </li>
     </ul>
   </div>
 </nav>
+
+
+<!-- Logout Confirmation Modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <p class="mb-4 fs-5">Are you sure you want to logout?</p>
+        <button class="btn btn-success me-2" data-bs-dismiss="modal" routerLink="/login">Yes, Logout</button>
+        <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
