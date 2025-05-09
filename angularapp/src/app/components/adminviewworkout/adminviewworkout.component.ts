@@ -79,8 +79,6 @@ export class AdminviewworkoutComponent implements OnInit {
 
  
 
-  
-
   isColumnVisible(key: string): boolean {
     return this.columnSettings.find(col => col.key === key)?.visible || false;
   }
