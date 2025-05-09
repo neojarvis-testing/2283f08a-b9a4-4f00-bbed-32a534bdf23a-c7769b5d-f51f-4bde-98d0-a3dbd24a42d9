@@ -19,7 +19,7 @@ export class WorkoutrequestService {
     });
   }
 
-  addWorkoutRequest(data: Workoutrequest): Observable<Workoutrequest> {
+  addWorkoutRequest(data: Partial<Workoutrequest>): Observable<Workoutrequest> {
     return this.http.post<Workoutrequest>(
       `${this.baseUrl}/workoutRequests/addWorkoutRequest`,data,
       { headers: this.getAuthHeaders() }
