@@ -6,13 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./usernav.component.css']
 })
 export class UsernavComponent implements OnInit {
-
-  userId: string;
-
+  userId:string
+  userName:string
   constructor() { }
 
   ngOnInit(): void {
-    this.userId = localStorage.getItem('id') || '';    
+    this.userId=localStorage.getItem('id');
+    this.userName=localStorage.getItem('userName');
   }
 
 }

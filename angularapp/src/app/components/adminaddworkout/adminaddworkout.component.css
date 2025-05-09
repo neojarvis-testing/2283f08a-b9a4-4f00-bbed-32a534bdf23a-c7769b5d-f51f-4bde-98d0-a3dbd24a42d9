@@ -4,6 +4,9 @@
   width:300px;
   margin:auto;
 }
+.validation-space {
+  min-height: 20px;
+}
 
 .custom-header {
   background-color: #28a745; /* Bootstrap green */

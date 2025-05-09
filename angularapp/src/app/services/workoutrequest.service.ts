@@ -21,7 +21,7 @@ export class WorkoutrequestService {
 
   addWorkoutRequest(data: Workoutrequest): Observable<Workoutrequest> {
     return this.http.post<Workoutrequest>(
-      `${this.baseUrl}/workoutRequests/addWorkout`,data,
+      `${this.baseUrl}/workoutRequests/addWorkoutRequest`,data,
       { headers: this.getAuthHeaders() }
     );
   }
@@ -49,7 +49,7 @@ export class WorkoutrequestService {
 
   updateWorkoutStatus(id: string, workoutApplication: Workoutrequest): Observable<void> {
     return this.http.put<void>(
-      `${this.baseUrl}/workoutRequests/update/${id}`,
+      `${this.baseUrl}/workoutRequests/updateWorkoutRequest/${id}`,
       workoutApplication,
       { headers: this.getAuthHeaders() }
     );
