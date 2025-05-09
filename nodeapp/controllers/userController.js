@@ -9,8 +9,7 @@ async function getUserByEmailAndPassword(req, res) {
         const { email, password } = req.body;
         const user = await User.findOne({ email, password});
         if (user) {
-            const token = generateToken(user._id);
-            const response = {
+                const response = {
                 id:user._id,
                 userName: user.userName,
                 role: user.role,

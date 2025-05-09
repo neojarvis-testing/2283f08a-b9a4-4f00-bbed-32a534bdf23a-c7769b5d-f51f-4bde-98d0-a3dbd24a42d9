@@ -24,7 +24,7 @@ const routes: Routes = [
   {path:'userviewworkout',component:UserviewworkoutComponent},
   {path:'userworkoutform/:id',component:UserworkoutformComponent},
   {path:'',redirectTo:'/login',pathMatch:'full'},
-  {path:'**',component:ErrorComponent}
+  {path:'**',component:ErrorComponent},
 ];
 
 @NgModule({
