@@ -1,0 +1,63 @@
+.form-line{
+    border:none;
+    border-bottom: 2px solid #ccc;
+    border-radius: 0;
+    outline: none;
+    width:100%;
+    padding: 6px 0;
+    background: transparent;
+    font-size: 1rem;
+}
+.form-line:focus{
+    border-color: #28a745;
+    box-shadow: none;
+}
+.btn-success{
+    border-radius: 6px;
+    font-weight: 500;
+}
+input.form-line,
+select.form-line {
+  border: none;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+  width: 100%;
+  padding: 5px;
+}
+
+input.form-line:focus,
+select.form-line:focus {
+  border-bottom: 2px solid green;
+}
+
+input.is-invalid,
+select.is-invalid {
+  border-bottom: 2px solid red !important;
+}
+.custom-modal {
+    border:none;
+    box-shadow: none;
+    width:300px;
+    margin:auto;
+  }
+  
+  .custom-header {
+    background-color: #28a745; /* Bootstrap green */
+    border-bottom: none;
+    padding: 1rem;
+  }
+  
+  .custom-ok-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 20px;
+  }
+  
+  .custom-ok-btn:hover {
+    background-color: #218838;
+  }
+  .custom-modal .modal-footer{
+    border-top: none;
+  }

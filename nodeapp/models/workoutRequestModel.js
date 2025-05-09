@@ -1,50 +1,50 @@
 const mongoose = require('mongoose');
 
 const workoutRequestSchema = new mongoose.Schema({
-    userId:{
-        type:mongoose.Schema.Types.ObjectId,
-        required:true,
-        ref:'User'
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
+
     },
-    workoutId:{
-        type:mongoose.Schema.Types.ObjectId,
-        required:true,
-        ref:'Workout'
+    workoutId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Workout'
     },
-    age:{
-        type:Number,
-        required:true,
-        min:1,
-        max:120
+    age: {
+        type: Number,
+        required: true,
+        min: 1,
+        max: 120
     },
-    bmi:{
-        type:Number,
-        required:true,
-        min:10,
-        max:50
+    bmi: {
+        type: Number,
+        required: true,
+        min: 10,
+        max: 50
     },
-    gender:{
-        type:String,
-        required:true
+    gender: {
+        type: String,
+        required: true
     },
-    dietaryPreferences:{
-        type:String,
-        required:true
+    dietaryPreferences: {
+        type: String,
+        required: true
     },
-    medicalHistory:{
-        type:String,
-        required:true
+    medicalHistory: {
+        type: String,
+        required: true
     },
-    requestedDate:{
-        type:Date,
-        required:true,
-        default:Date.now
+    requestedDate: {
+        type: Date,
+        required: true,
+        default: Date.now
     },
-    requestStatus:{
-        type:String,
-        required:true
+    requestStatus: {
+        type: String,
+        enum: ['Pending', 'Approved', 'Reject'],
+        default: 'Pending'
     }
 })
 module.exports = mongoose.model('WorkoutRequest', workoutRequestSchema);
-
-
