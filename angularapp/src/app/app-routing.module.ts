@@ -21,7 +21,7 @@ const routes: Routes = [
   {path:'adminviewworkout',component:AdminviewworkoutComponent},
   {path:'requestedworkout',component:RequestedworkoutComponent},
   {path:'userappliedworkout/:id',component:UserappliedworkoutComponent},
-  {path:'userviewworkout/:id',component:UserviewworkoutComponent},
+  {path:'userviewworkout',component:UserviewworkoutComponent},
   {path:'userworkoutform/:id',component:UserworkoutformComponent},
   {path:'',redirectTo:'/login',pathMatch:'full'},
   {path:'**',component:ErrorComponent}

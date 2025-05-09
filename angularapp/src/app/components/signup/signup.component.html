@@ -1,4 +1,4 @@
-<div class="container-fluid d-flex justify-content-center align-items-center h-100 bg-light">
+<!-- <div class="container-fluid d-flex justify-content-center align-items-center h-100 bg-light">
     <div class="row shadow-lg bg-white rounded overflow-hidden m-3" style="width: 100%; max-width: 1000px;">
         <div class="col-md-6 p-0">
             <div class="position-relative h-100">
@@ -60,6 +60,91 @@
             </div>
         </div>
     </div>
+</div> -->
+   <!-- Success Modal -->
+<!-- <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <p class="mb-4 fs-5">User Registration is Successful!</p>
+                <button class="btn btn-primary ok-btn" data-bs-dismiss="modal" routerLink="/login">Ok</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- User Name is required
+Email is required
+Mobile Number is required
+Password is required
+Confirm Password is required -->
+<div class="container-fluid d-flex justify-content-center align-items-center h-100 bg-light">
+    <div class="row shadow-lg bg-white rounded overflow-hidden m-3" style="width: 100%; max-width: 1000px;">
+        <div class="col-md-6 p-0">
+            <div class="position-relative h-100">
+                <img src="https://shorturl.at/Xb3CJ" class="img-fluid h-100 w-100 object-fit-cover"
+                    alt="Fitness Tracker">
+                <div class="position-absolute top-50 start-50 translate-middle text-center">
+                    <h2 class="text-white fw-bold fitness-heading m-0">Fitness Tracker</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 p-5 d-flex align-items-center">
+            <div class="w-100 card w-100 shadow-lg p-4 border-0">
+                <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+                    <h3 class="mb-4 text-center fw-bold">Signup</h3>
+                    <div class="mb-4">
+                        <input type="text" id="userName" name="userName" [(ngModel)]="user.userName" #userName="ngModel" 
+                            class="custom-input" placeholder="UserName" required>
+                        <div class="invalid-feedback" *ngIf="(submitted || userName.touched) && userName.errors?.required">
+                            User Name is required
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <input type="email" id="email" name="email" [(ngModel)]="user.email" #email="ngModel"
+                            class="custom-input" placeholder="Email" required
+                            pattern="^[a-z][a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$">
+                        <div class="invalid-feedback" *ngIf="(submitted || email.touched) && email.errors?.required">Email is required</div>
+                        <div class="invalid-feedback" *ngIf="(submitted || email.touched || email.dirty) && email.errors?.pattern">Please enter a valid email</div>
+                    </div>
+                    <div class="mb-4">
+                        <input type="tel" id="mobile" name="mobile" [(ngModel)]="user.mobile" #mobile="ngModel"
+                            class="custom-input" placeholder="Mobile" required
+                            pattern="^[0-9]{10}$">
+                        <div class="invalid-feedback" *ngIf="(submitted || mobile.touched) && mobile.errors?.required">Mobile Number is required</div>
+                        <div class="invalid-feedback" *ngIf="(submitted || mobile.touched || mobile.dirty) && mobile.errors?.pattern">Mobile number must be 10 digits</div>
+                    </div>
+                    <div class="mb-4">
+                        <input type="password" id="password" name="password" [(ngModel)]="user.password" #password="ngModel"
+                            class="custom-input" placeholder="Password" required
+                            pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$">
+                        <div class="invalid-feedback" *ngIf="(submitted || password.touched) && password.errors?.required">Password is required</div>
+                        <div class="invalid-feedback" *ngIf="(submitted || password.touched || password.dirty) && password.errors?.pattern">Password must be at least 6 characters and Strong</div>
+                    </div>
+                    <div class="mb-4">
+                        <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="user.confirmPassword" 
+                            #confirmPassword="ngModel" class="custom-input" placeholder="Confirm Password" required>
+                        <div class="invalid-feedback" *ngIf="(submitted || confirmPassword.touched) && confirmPassword.errors?.required">Confirm Password is required</div>
+                        <div class="invalid-feedback" *ngIf="(submitted || confirmPassword.touched || confirmPassword.dirty) && user.password !== user.confirmPassword">Password do not match</div>
+                    </div>
+                    <div class="mb-4">
+                        <select name="role" id="role" [(ngModel)]="user.role" #role="ngModel" class="custom-select" required>
+                            <option value="" selected disabled>Select Role</option>
+                            <option value="Admin">Admin</option>
+                            <option value="User">User</option>
+                        </select>
+                        <div class="invalid-feedback" *ngIf="(submitted || role.touched) && role.errors?.required">Role is required</div>
+                    </div>
+                    <div class="d-flex justify-content-center mb-3">
+                        <button type="submit" class="signup-btn">Signup</button>
+                    </div>
+                    <div class="text-center mt-4">
+                        <span>Already have an account? </span>
+                        <a routerLink="/login" class="fw-bold text-decoration-none">Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- Success Modal -->
 <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
@@ -72,3 +157,7 @@
         </div>
     </div>
 </div>
+
+
+
+

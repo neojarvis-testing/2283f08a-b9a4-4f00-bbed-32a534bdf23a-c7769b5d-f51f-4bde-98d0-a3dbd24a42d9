@@ -21,8 +21,7 @@ export class WorkoutrequestService {
 
   addWorkoutRequest(data: Workoutrequest): Observable<Workoutrequest> {
     return this.http.post<Workoutrequest>(
-      `${this.baseUrl}/workoutRequests/addWorkoutRequest`,
-      data,
+      `${this.baseUrl}/workoutRequests/addWorkoutRequest`,data,
       { headers: this.getAuthHeaders() }
     );
   }
@@ -36,7 +35,7 @@ export class WorkoutrequestService {
 
   deleteWorkoutApplication(requestedId: string): Observable<void> {
     return this.http.delete<void>(
-      `${this.baseUrl}/workoutRequests/deleteWorkoutRequests/${requestedId}`,
+      `${this.baseUrl}/workoutRequests/deleteWorkoutRequest/${requestedId}`,
       { headers: this.getAuthHeaders() }
     );
   }
