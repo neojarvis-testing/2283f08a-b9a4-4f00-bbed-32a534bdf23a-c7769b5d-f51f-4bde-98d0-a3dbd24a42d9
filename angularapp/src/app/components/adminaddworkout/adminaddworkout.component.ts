@@ -34,7 +34,7 @@ export class AdminaddworkoutComponent implements OnInit {
 
   ngOnInit(): void {
     
-  }
+}
 
   get f() {
     return this.workoutForm.controls;
