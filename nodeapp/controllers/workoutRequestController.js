@@ -54,7 +54,7 @@ const deleteWorkoutRequest = async (req, res) => {
 };
 const getWorkoutRequestsByUserId = async (req, res) => {
     try {
-        const workoutRequests = await WorkoutRequest.find({ userId: req.params.userId });
+        const workoutRequests = await WorkoutRequest.find({ userId: req.params?.id }).populate('workoutId');
         if (workoutRequests.length === 0) {
             return res.status(404).json({ message: 'No workout requests found for this user' });
         }
