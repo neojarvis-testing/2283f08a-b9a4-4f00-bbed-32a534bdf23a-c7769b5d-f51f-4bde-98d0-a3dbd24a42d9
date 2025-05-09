@@ -69,6 +69,4 @@ export class AdmineditworkoutComponent implements OnInit {
         modal.show();
     })
   }
-
-
 }

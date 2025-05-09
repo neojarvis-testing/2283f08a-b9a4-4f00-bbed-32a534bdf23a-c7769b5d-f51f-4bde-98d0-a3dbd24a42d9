@@ -13,17 +13,15 @@
 </div>
 
 
-<div class="d-flex justify-content-center align-items-center vh-100 m-5">
-    <div class="card p-2 shadow" style="width: 400px;max-height: 700px;overflow-y: hidden;">
+<div class="d-flex justify-content-center align-items-center h-100 m-5">
+    <div class="card p-2 shadow" style="width: 400px;max-height: 770px;overflow-y: hidden;">
       <h4 class="text-center mb-2 pb-2" style="border-bottom: 2px solid blue;">Create New Workout</h4>
   
       <form [formGroup]="workoutForm" (ngSubmit)="onSubmit()">
         <div class="form-group m-2">
           <label>Workout Name*</label>
           <input type="text" class="form-control mt-2" formControlName="workoutName"  placeholder="Workout Name"/>
-          <div *ngIf="f.workoutName.touched && f.workoutName.errors" class="text-danger">
-            Workout Name is required
-          </div>
+            <div *ngIf="f.workoutName.touched && f.workoutName.errors" class="text-danger">Workout Name is required</div>
         </div>
   
         <div class="form-group m-2">
