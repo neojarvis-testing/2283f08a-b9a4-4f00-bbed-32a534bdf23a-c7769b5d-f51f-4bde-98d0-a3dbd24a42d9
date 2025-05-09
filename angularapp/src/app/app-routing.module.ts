@@ -20,7 +20,7 @@ const routes: Routes = [
   {path:'admineditworkout/:id',component:AdmineditworkoutComponent},
   {path:'adminviewworkout',component:AdminviewworkoutComponent},
   {path:'requestedworkout',component:RequestedworkoutComponent},
-  {path:'userappliedworkout',component:UserappliedworkoutComponent},
+  {path:'userappliedworkout/:id',component:UserappliedworkoutComponent},
   {path:'userviewworkout',component:UserviewworkoutComponent},
   {path:'userworkoutform/:id',component:UserworkoutformComponent},
   {path:'',redirectTo:'/login',pathMatch:'full'},

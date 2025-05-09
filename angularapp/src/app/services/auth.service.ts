@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Login } from '../models/login.model';
@@ -14,7 +13,7 @@ export class AuthService {
 
   private currentRoleSubject = new BehaviorSubject<string | null>(null);
   private currentUserSubject = new BehaviorSubject<string | null>(null);
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   login(login: Login): Observable<any> {
     return this.http.post<any>(`${environment.backendUrl}/user/login`, login).pipe(
@@ -28,7 +27,7 @@ export class AuthService {
     );
   }
   
-  signup(user: User): Observable<any> {
+  register(user: User): Observable<any> {
     return this.http.post<any>(`${environment.backendUrl}/user/signup`, user);
   }
 
