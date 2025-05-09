@@ -1,7 +1,9 @@
 .navbar-custom {
   background: linear-gradient(to right, #5e0a82, #65422ff6, #31784e,#065828);
 }
-
+.modal-dialog{
+  width: 350px;
+}
 .admin-pill {
   border: 2px solid white;
   color: white;
