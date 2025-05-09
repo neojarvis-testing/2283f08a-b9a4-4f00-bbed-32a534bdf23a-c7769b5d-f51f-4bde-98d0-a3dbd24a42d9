@@ -7,10 +7,11 @@ const { generateToken } = require('../authUtils');
 async function getUserByEmailAndPassword(req, res) {
     try {
         const { email, password } = req.body;
-        const user = await User.findOne({ email, password});
+        const user = await User.findOne({ email, password });
         if (user) {
-                const response = {
-                id:user._id,
+            const token = generateToken(user._id);
+            const response = {
+                id: user._id,
                 userName: user.userName,
                 role: user.role,
                 token: token,
