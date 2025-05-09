@@ -2,15 +2,15 @@
     <div class="container-fluid">
         <span class="navbar-brand text-white fw-bold">FitnessApp</span>
         <ul class="navbar-nav flex-row align-items-center gap-3">
-            <span class="admin-pill me-2">user / User</span>
+            <span class="admin-pill me-2">{{userName}} / User</span>
             <li class="nav-item">
-                <a class="nav-link text-white" href="#" routerLink="">Home</a>
+                <a class="nav-link text-white" routerLink="/home-page">Home</a>
             </li>
             <li class="nav-item position-relative workout-hover">
                 <a class="nav-link text-white">Workout</a>
                 <div class="workout-menu position-absolute bg-white shadow p-2 rounded">
-                    <a href="#" routerLink="/userviewworkout" class="d-block text-dark text-decoration-none py-1 px-3 text-center">View Workout</a>
-                    <a href="#" routerLink="" class="d-block text-dark text-decoration-none py-1 px-3 text-center">Applied WorkoutRequest</a>
+                    <a routerLink="/userviewworkout" class="d-block text-dark text-decoration-none py-1 px-3 text-center">View Workout</a>
+                    <a routerLink="/userworkoutform/{{userId}}" class="d-block text-dark text-decoration-none py-1 px-3 text-center">Applied WorkoutRequest</a>
                 </div>
             </li>
             <li class="nav-item">

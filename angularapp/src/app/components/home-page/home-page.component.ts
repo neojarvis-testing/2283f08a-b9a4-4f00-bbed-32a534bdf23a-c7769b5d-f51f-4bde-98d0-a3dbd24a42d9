@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home-page',
@@ -10,7 +9,7 @@ export class HomePageComponent implements OnInit {
 isAdmin: boolean=false;
 isUser: boolean=false;
 
-  constructor(private authService:AuthService) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.checkUserRole();

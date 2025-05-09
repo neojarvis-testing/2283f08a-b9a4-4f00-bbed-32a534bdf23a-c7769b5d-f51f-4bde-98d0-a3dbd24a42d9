@@ -28,14 +28,14 @@ export class WorkoutrequestService {
 
   getAppliedWorkouts(userId: string): Observable<Workoutrequest[]> {
     return this.http.get<Workoutrequest[]>(
-      `${this.baseUrl}workoutRequests/${userId}`,
+      `${this.baseUrl}/workoutRequests/user/${userId}`,
       { headers: this.getAuthHeaders() }
     );
   }
 
   deleteWorkoutApplication(requestedId: string): Observable<void> {
     return this.http.delete<void>(
-      `${this.baseUrl}/workoutRequests/${requestedId}`,
+      `${this.baseUrl}/workoutRequests/deleteWorkoutRequest/${requestedId}`,
       { headers: this.getAuthHeaders() }
     );
   }
@@ -49,7 +49,7 @@ export class WorkoutrequestService {
 
   updateWorkoutStatus(id: string, workoutApplication: Workoutrequest): Observable<void> {
     return this.http.put<void>(
-      `${this.baseUrl}/workoutRequests/update/${id}`,
+      `${this.baseUrl}/workoutRequests/updateWorkoutRequest/${id}`,
       workoutApplication,
       { headers: this.getAuthHeaders() }
     );

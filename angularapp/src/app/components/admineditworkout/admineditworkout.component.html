@@ -2,83 +2,78 @@
 <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content custom-modal">
-      <div class="modal-body text-center">
-        Updated successfully!
-      </div>
+      <div class="modal-body text-center">Updated successfully!</div>
       <div class="modal-footer justify-content-center">
         <button type="button" class="btn custom-ok-btn" data-bs-dismiss="modal"
-          routerLink="/adminviewworkout">OK</button>
+          routerLink="/adminviewworkout">Ok</button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="edit-container d-flex justify-content-center align-items-center vh-100 bg-light">
-  <div class="card p-2 shadow" style="width: 500px;">
+
+<div class="d-flex justify-content-center align-items-center h-100 m-5">
+  <div class="card p-2 shadow" style="width: 400px;max-height: 750px;overflow-y: hidden; ">
     <div class="d-flex justify-content-end mb-2">
       <button class="btn btn-primary back-btn w-25" routerLink="/adminviewworkout">Back</button>
     </div>
-    <h4 class="text-center mb-2 pb-1" style="border-bottom: 2px solid blue;" >Edit Workout</h4>
+    <h4 class="text-center mb-2 pb-2" style="border-bottom: 2px solid blue;">Edit Workout</h4>
 
     <form [formGroup]="workoutForm" (ngSubmit)="updateWorkout()">
-      <div class="form-group mt-3">
-        <label>Workout Name*</label>
-        <input type="text" class="form-control" formControlName="workoutName" />
-        <div *ngIf="f.workoutName.touched && f.workoutName.errors" class="text-danger">
-          Workout Name is required
-        </div>
+      <div class="form-group m-2">
+        <label>Workout Name <span class="text-danger">*</span></label>
+        <input type="text" class="form-control mt-2" formControlName="workoutName" placeholder="Workout Name" />
+        <div *ngIf="f.workoutName.touched && f.workoutName.errors" class="text-danger">Workout Name is required</div>
       </div>
 
-      <div class="form-group mt-3">
-        <label>Description*</label>
-        <textarea class="form-control" formControlName="description"></textarea>
-        <div *ngIf="f.description.touched && f.description.errors" class="text-danger">
-          Description is required
-        </div>
+      <div class="form-group m-2">
+        <label>Description <span class="text-danger">*</span></label>
+        <textarea class="form-control mt-2" formControlName="description" placeholder="Workout Description"></textarea>
+        <div *ngIf="f.description.touched && f.description.errors" class="text-danger">Description is required</div>
       </div>
 
-      <div class="form-group mt-3">
-        <label>Difficulty Level*</label>
-        <input type="number" class="form-control" formControlName="difficultyLevel" min="1" max="10" />
-        <div *ngIf="f.difficultyLevel.touched  && f.difficultyLevel.errors" class="text-danger">
-          Difficulty Level is required
-        </div>
+      <div class="form-group m-2">
+        <label>Difficulty Level <span class="text-danger">*</span></label>
+        <input type="number" class="form-control mt-2" formControlName="difficultyLevel" min="1" max="10" />
+        <div *ngIf="f.difficultyLevel.touched  && f.difficultyLevel.errors" class="text-danger">Difficulty Level is required</div>
       </div>
 
-      <div class="form-group mt-3">
-        <label>Target Area*</label>
-        <select class="form-control" formControlName="targetArea">
+      <div class="form-group m-2">
+        <label>Target Area <span class="text-danger">*</span></label>
+        <select class="form-control mt-2" formControlName="targetArea">
           <option value="">Select Target Area</option>
           <option>Arms</option>
           <option>Legs</option>
           <option>Core</option>
           <option>Full Body</option>
         </select>
-        <div *ngIf="f.targetArea.touched && f.targetArea.errors" class="text-danger">
-          Target Area is required
-        </div>
+        <div *ngIf="f.targetArea.touched && f.targetArea.errors" class="text-danger">Target Area is required</div>
       </div>
 
-      <div class="form-group mt-3">
-        <label>Days Per Week*</label>
-        <input type="number" class="form-control" formControlName="daysPerWeek" min="1" max="7" />
+      <div class="form-group m-2">
+        <label>Days Per Week <span class="text-danger">*</span></label>
+        <input type="number" class="form-control mt-2" formControlName="daysPerWeek" min="1" max="7" />
         <div *ngIf="f.daysPerWeek.touched && f.daysPerWeek.errors" class="text-danger">
           <div *ngIf="f.daysPerWeek.errors['required']">Days Per Week is required</div>
           <div *ngIf="f.daysPerWeek.errors['invalidDaysPerWeek']">Days Per Week must be between 1 & 7</div>
         </div>
       </div>
 
-      <div class="form-group mt-3">
-        <label>Workout Duration (Minutes)*</label>
-        <input type="number" class="form-control" formControlName="averageWorkoutDurationInMinutes" />
-        <div *ngIf="f.averageWorkoutDurationInMinutes.touched && f.averageWorkoutDurationInMinutes.errors"
-          class="text-danger">
-          Workout Duration is required
-        </div>
+      <div class="form-group m-2">
+        <label>Workout Duration (Minutes) <span class="text-danger">*</span></label>
+        <input type="number" class="form-control mt-2" formControlName="averageWorkoutDurationInMinutes" />
+        <div *ngIf="f.averageWorkoutDurationInMinutes.touched && f.averageWorkoutDurationInMinutes.errors" class="text-danger">Workout Duration is required</div>
       </div>
 
       <div *ngIf="errorMessage" class="text-danger text-center mb-2">{{ errorMessage }}</div>
 
-      <button class="btn btn-primary w-100 mt-3">Submit</button>
+      <button class="btn btn-primary w-100">Submit</button>
     </form>
   </div>
+</div>
+
+
+
+
+
+
