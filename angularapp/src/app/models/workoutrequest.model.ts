@@ -1,4 +1,5 @@
 export interface Workoutrequest {
+    _id?:string
     userId: { userName: string };
     workoutId: {
       workoutName: string;
