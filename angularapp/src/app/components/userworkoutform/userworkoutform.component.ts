@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WorkoutrequestService } from 'src/app/services/workoutrequest.service';
-declare var bootstrap: any;
+declare let bootstrap: any;
 
 @Component({
   selector: 'app-userworkoutform',
@@ -16,7 +16,7 @@ export class UserworkoutformComponent implements OnInit {
   errorMessage = '';
   workoutId: string | null = null;
    
-  constructor(private fb: FormBuilder, private service: WorkoutrequestService, private router: Router, private route: ActivatedRoute) {
+  constructor(private readonly fb: FormBuilder, private readonly service: WorkoutrequestService, private readonly route: ActivatedRoute) {
     this.form = this.fb.group({
       age: ['', Validators.required],
       bmi: ['', Validators.required],
@@ -60,8 +60,4 @@ export class UserworkoutformComponent implements OnInit {
 
  
   }
-  goBack():void{
-    this.router.navigate(['/userviewworkout']);
-
-}
 }

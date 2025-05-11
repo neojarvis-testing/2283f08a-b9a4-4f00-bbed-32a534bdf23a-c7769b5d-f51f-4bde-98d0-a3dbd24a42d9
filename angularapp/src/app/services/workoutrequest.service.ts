@@ -8,7 +8,7 @@ import { Workoutrequest } from '../models/workoutrequest.model';
   providedIn: 'root'
 })
 export class WorkoutrequestService {
-  private baseUrl = environment.backendUrl;
+  private readonly baseUrl = environment.backendUrl;
 
   constructor(private http: HttpClient) {}
 
