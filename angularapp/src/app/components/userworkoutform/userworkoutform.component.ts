@@ -37,7 +37,7 @@ export class UserworkoutformComponent implements OnInit {
     if (this.form.invalid){
       const anyTouched=Object.values(this.form.controls).some(control=>control.touched);
       if(!anyTouched){
-        this.errorMessage='All fields are required'
+        this.errorMessage='*All fields are required'
       }else{
         Object.values(this.form.controls).forEach(control=>control.markAsTouched());
       }

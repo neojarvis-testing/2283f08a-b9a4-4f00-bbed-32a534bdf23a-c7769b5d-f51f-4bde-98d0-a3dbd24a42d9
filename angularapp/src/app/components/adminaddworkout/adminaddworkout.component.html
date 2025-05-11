@@ -11,9 +11,9 @@
 </div>
 
 
-<div class="d-flex justify-content-center align-items-center h-100 m-5">
+<div class="d-flex justify-content-center align-items-center h-100 m-4">
     <div class="card p-2 shadow" style="width: 400px;max-height: 770px;overflow-y: hidden;">
-      <h4 class="text-center mb-2 pb-2" style="border-bottom: 2px solid blue;">Create New Workout</h4>
+      <h4 class="text-center mb-2 pb-3 pt-4" style="border-bottom: 2px solid blue;">Create New Workout</h4>
   
       <form [formGroup]="workoutForm" (ngSubmit)="onSubmit()">
         <div class="form-group m-2">
@@ -62,8 +62,9 @@
         </div>
   
         <div *ngIf="errorMessage" class="text-danger text-center mb-2">{{ errorMessage }}</div>
-  
+        <div class="form-group m-2">
         <button class="btn btn-primary w-100">Submit</button>
+        </div>
       </form>
     </div>
   </div>

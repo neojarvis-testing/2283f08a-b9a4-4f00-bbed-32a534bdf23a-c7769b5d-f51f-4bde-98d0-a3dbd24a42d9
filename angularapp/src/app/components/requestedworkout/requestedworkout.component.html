@@ -19,7 +19,6 @@
         <option value="Rejected">Rejected</option>
       </select>
     </div>
-
   </div>
 
   <!-- Table -->
@@ -41,8 +40,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let request of filteredRequests; let i = index">
-          <td>{{ i + 1 }}</td>
+        <tr *ngFor="let request of paginatedRequests; let i = index">
+          <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
           <td>{{ request.userId.userName }}</td>
           <td>{{ request.workoutId.workoutName }}</td>
           <td>{{ request.requestedDate | date: 'mediumDate' }}</td>
@@ -58,7 +57,6 @@
               (click)="approveRequest(request._id)">
               Approve
             </button>
-
             <button class="btn btn-danger btn-sm mx-2" [disabled]="request.requestStatus === 'Rejected'"
               (click)="rejectRequest(request._id)">
               Reject
@@ -70,6 +68,27 @@
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="d-flex justify-content-center align-items-center mt-3">
+    <nav *ngIf="filteredRequests.length > 0">
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <a class="page-link" (click)="previousPage()" aria-label="Previous">
+            <span aria-hidden="true">Prev</span>
+          </a>
+        </li>
+        <li class="page-item" *ngFor="let page of getPageNumbers()" [class.active]="page === currentPage">
+          <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <a class="page-link" (click)="nextPage()" aria-label="Next">
+            <span aria-hidden="true">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </div>
 
@@ -92,4 +111,3 @@
     </div>
   </div>
 </div>
-

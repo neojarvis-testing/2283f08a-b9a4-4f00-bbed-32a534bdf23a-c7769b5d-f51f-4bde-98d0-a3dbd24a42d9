@@ -14,10 +14,10 @@
 
 <div class="d-flex justify-content-center align-items-center h-100 m-5">
   <div class="card p-2 shadow" style="width: 400px;max-height: 750px;overflow-y: hidden; ">
-    <div class="d-flex justify-content-end mb-2">
-      <button class="btn btn-primary back-btn w-25" routerLink="/adminviewworkout">Back</button>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-primary back-btn" routerLink="/adminviewworkout">Back</button>
     </div>
-    <h4 class="text-center mb-2 pb-2" style="border-bottom: 2px solid blue;">Edit Workout</h4>
+    <h4 class="text-center mb-2 pb-3" style="border-bottom: 2px solid blue;">Edit Workout</h4>
 
     <form [formGroup]="workoutForm" (ngSubmit)="updateWorkout()">
       <div class="form-group m-2">
@@ -66,8 +66,9 @@
       </div>
 
       <div *ngIf="errorMessage" class="text-danger text-center mb-2">{{ errorMessage }}</div>
-
+      <div class="form-group m-2">
       <button class="btn btn-primary w-100">Submit</button>
+      </div>
     </form>
   </div>
 </div>

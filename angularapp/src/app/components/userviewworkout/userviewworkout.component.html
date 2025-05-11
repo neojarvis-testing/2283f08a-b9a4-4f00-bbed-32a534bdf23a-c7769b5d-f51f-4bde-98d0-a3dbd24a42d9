@@ -63,7 +63,7 @@
     <nav *ngIf="filteredWorkouts.length > 0">
       <ul class="pagination justify-content-center">
         <li class="page-item" [class.disabled]="currentPage === 1">
-          <a class="page-link" (click)="goToPage(currentPage - 1)">Previous</a>
+          <a class="page-link" (click)="goToPage(currentPage - 1)">Prev</a>
         </li>
         
         <li class="page-item" *ngFor="let page of getPages()" [class.active]="page === currentPage">
