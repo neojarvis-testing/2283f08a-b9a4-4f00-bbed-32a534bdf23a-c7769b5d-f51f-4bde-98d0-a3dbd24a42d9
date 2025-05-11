@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators }
 import { ActivatedRoute } from '@angular/router';
 import { Workout } from 'src/app/models/workout.model';
 import { WorkoutService } from 'src/app/services/workout.service';
-declare var bootstrap: any;
+declare let bootstrap: any;
 
 @Component({
   selector: 'app-admineditworkout',
@@ -16,7 +16,7 @@ export class AdmineditworkoutComponent implements OnInit {
   submitted = false;
   errorMessage = '';
   workouts:Workout[]=[]
-  constructor(private fb: FormBuilder, private workoutservice: WorkoutService, private route: ActivatedRoute) {
+  constructor(private readonly fb: FormBuilder, private readonly workoutservice: WorkoutService, private readonly route: ActivatedRoute) {
     this.workoutForm = this.fb.group({
       workoutName: ['', Validators.required],
       description: ['', Validators.required],

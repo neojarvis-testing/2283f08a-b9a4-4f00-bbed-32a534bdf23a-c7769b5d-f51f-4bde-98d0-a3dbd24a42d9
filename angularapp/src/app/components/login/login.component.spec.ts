@@ -10,7 +10,6 @@ class MockAuthService {
   login(request: any) {
     return of({ token: 'dummyToken', role: 'Employee', id: '1', userName: 'John Doe' });
   }
-  setUserInfo(userData: any) { }
 }
 
 describe('LoginComponent', () => {

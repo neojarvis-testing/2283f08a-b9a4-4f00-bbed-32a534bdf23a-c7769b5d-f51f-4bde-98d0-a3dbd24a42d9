@@ -9,7 +9,7 @@ import { Workoutrequest } from '../models/workoutrequest.model';
   providedIn: 'root'
 })
 export class WorkoutService {
-  constructor(private http:HttpClient) { }
+  constructor(private readonly http:HttpClient) { }
   
 // Fetch all workouts
 getAllWorkouts(): Observable<Workout[]> {
