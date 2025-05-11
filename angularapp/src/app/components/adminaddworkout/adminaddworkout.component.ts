@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { WorkoutService } from 'src/app/services/workout.service';
-declare var bootstrap: any;
+declare let bootstrap: any;
 
 
 @Component({
@@ -14,7 +14,7 @@ export class AdminaddworkoutComponent implements OnInit {
   submitted = false;
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private workoutService: WorkoutService) {
+  constructor(private readonly fb: FormBuilder, private readonly workoutService: WorkoutService) {
     this.workoutForm = this.fb.group({
       workoutName: ['', Validators.required],
       description: ['', Validators.required],
@@ -33,7 +33,7 @@ export class AdminaddworkoutComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    
+    throw new Error("ngOnInit() cannot be performed because ...");
 }
 
   get f() {
