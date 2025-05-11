@@ -2,6 +2,8 @@
 
 const User = require('../models/userModel');
 const { generateToken } = require('../authUtils');
+const bcrypt=require('bcryptjs')
+
 
 // Function to login user
 async function getUserByEmailAndPassword(req, res) {
@@ -9,6 +11,7 @@ async function getUserByEmailAndPassword(req, res) {
         const { email, password } = req.body;
         const user = await User.findOne({ email, password});
         if (user) {
+            const token = generateToken(user._id);
                 const response = {
                 id:user._id,
                 userName: user.userName,
@@ -28,11 +31,13 @@ async function getUserByEmailAndPassword(req, res) {
 async function addUser(req, res) {
     try {
         const { userName, email, mobile, password, role } = req.body;
-        await User.create({ userName, email, mobile, password, role });
+        const hashedPassword = await bcrypt.hash(password, 12);
+        await User.create({ userName, email, mobile, hashedPassword, role });
         return res.status(200).json({ message: 'Success' });
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
 }
+
 
 module.exports = { getUserByEmailAndPassword, addUser };
