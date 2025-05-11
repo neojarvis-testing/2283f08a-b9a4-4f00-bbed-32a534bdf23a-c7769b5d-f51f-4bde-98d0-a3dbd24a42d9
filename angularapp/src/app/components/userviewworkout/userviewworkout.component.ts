@@ -14,17 +14,6 @@ export class UserviewworkoutComponent implements OnInit {
   searchTerm: string = '';
   selectedWorkoutId:string|null=null;
 
-  columnSettings = [
-    { key: 'name', label: 'Workout Name', visible: true },
-    { key: 'description', label: 'Description', visible: true },
-    { key: 'difficultyLevel', label: 'Difficulty Level', visible: true },
-    { key: 'targetArea', label: 'Target Area', visible: true },
-    { key: 'daysPerWeek', label: 'Days Per Week', visible: true },
-    { key: 'duration', label: 'Duration (Minutes)', visible: true },
-    { key: 'createdAt', label: 'Created At', visible: true },
-    { key: 'action', label: 'Action', visible: true }
-  ];
-
   constructor(private workoutService: WorkoutService) { }
 
   ngOnInit(): void {
@@ -75,11 +64,7 @@ export class UserviewworkoutComponent implements OnInit {
        workout.workoutName.toLowerCase().includes(term) ||
        workout.description.toLowerCase().includes(term)
      );
-   }
- 
-   isColumnVisible(key: string): boolean {
-     return this.columnSettings.find(col => col.key === key)?.visible || false;
-   }
+     }
  }
 
 

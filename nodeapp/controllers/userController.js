@@ -2,18 +2,22 @@
 
 const User = require('../models/userModel');
 const { generateToken } = require('../authUtils');
-const bcrypt=require('bcryptjs')
+const bcrypt = require('bcryptjs')
 
 
 // Function to login user
 async function getUserByEmailAndPassword(req, res) {
     try {
         const { email, password } = req.body;
-        const user = await User.findOne({ email, password});
+        const user = await User.findOne({ email});
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(401).json({ message: 'Invalid credentials' });
+        }
         if (user) {
             const token = generateToken(user._id);
-                const response = {
-                id:user._id,
+            const response = {
+                id: user._id,
                 userName: user.userName,
                 role: user.role,
                 token: token,
@@ -32,7 +36,7 @@ async function addUser(req, res) {
     try {
         const { userName, email, mobile, password, role } = req.body;
         const hashedPassword = await bcrypt.hash(password, 12);
-        await User.create({ userName, email, mobile, hashedPassword, role });
+        await User.create({ userName, email, mobile, password: hashedPassword, role });
         return res.status(200).json({ message: 'Success' });
     } catch (error) {
         return res.status(500).json({ message: error.message });
