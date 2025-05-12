@@ -43,5 +43,4 @@ async function addUser(req, res) {
     }
 }
 
-
 module.exports = { getUserByEmailAndPassword, addUser };

@@ -22,7 +22,7 @@ const getWorkoutRequestById = async (req, res) => {
 };
 const addWorkoutRequest = async (req, res) => {
     try {
-        const newWorkoutRequest = await WorkoutRequest.create(req.body);
+        const newWorkoutRequest =  await WorkoutRequest.create(req.body)
         res.status(200).json({ message: 'Workout Request Added Successfully', data: newWorkoutRequest });
     } catch (error) {
         res.status(500).json({ message: error.message });

@@ -26,8 +26,8 @@
       <tr *ngIf="filteredWorkouts.length === 0">
         <td colspan="9">Oops! No records found</td>
       </tr>
-      <tr *ngFor="let workout of filteredWorkouts; let i = index">
-        <td>{{ i + 1 }}</td>
+      <tr *ngFor="let workout of paginatedWorkouts; let i = index">
+        <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
         <td>{{ workout.workoutName }}</td>
         <td>{{ workout.description }}</td>
         <td>{{ workout.difficultyLevel }}</td>
@@ -36,13 +36,30 @@
         <td>{{ workout.averageWorkoutDurationInMinutes }}</td>
         <td>{{ workout.createdAt | date:'MM/dd/yy' }}</td>
         <td>
-          <button *ngIf="!appliedWorkouts.has(workout._id)" class="btn btn-success btn-sm" routerLink="/userworkoutform/{{workout._id}}">Apply</button>
+          <button *ngIf="!appliedWorkouts.has(workout._id)" class="btn btn-success btn-sm"
+            routerLink="/userworkoutform/{{workout._id}}">Apply</button>
           <button *ngIf="appliedWorkouts.has(workout._id)" class="btn btn-danger btn-sm" disabled>
             Applied
           </button>
-
         </td>
       </tr>
     </tbody>
   </table>
+
+  <!-- Pagination -->
+  <nav *ngIf="filteredWorkouts.length > 0">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" (click)="goToPage(currentPage - 1)">Prev</a>
+      </li>
+
+      <li class="page-item" *ngFor="let page of getPages()" [class.active]="page === currentPage">
+        <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+      </li>
+
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <a class="page-link" (click)="goToPage(currentPage + 1)">Next</a>
+      </li>
+    </ul>
+  </nav>
 </div>

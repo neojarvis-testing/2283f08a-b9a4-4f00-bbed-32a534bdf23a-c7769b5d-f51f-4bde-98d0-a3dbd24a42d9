@@ -10,7 +10,7 @@ import { Workoutrequest } from '../models/workoutrequest.model';
 export class WorkoutrequestService {
   private readonly baseUrl = environment.backendUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   private getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');

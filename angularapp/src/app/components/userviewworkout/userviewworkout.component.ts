@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Workout } from 'src/app/models/workout.model';
 import { WorkoutService } from 'src/app/services/workout.service';
+import { WorkoutrequestService } from 'src/app/services/workoutrequest.service';
 declare let bootstrap:any;
 
 @Component({
@@ -14,6 +15,8 @@ export class UserviewworkoutComponent implements OnInit {
   paginatedWorkouts: Workout[] = [];
   searchTerm: string = '';
   selectedWorkoutId: string | null = null;
+  appliedWorkouts: Set<string> = new Set();
+  userId:string
 
   // Pagination variables
   currentPage: number = 1;
@@ -21,21 +24,12 @@ export class UserviewworkoutComponent implements OnInit {
   totalPages: number = 1;
   maxVisiblePages: number = 5;
 
-  columnSettings = [
-    { key: 'name', label: 'Workout Name', visible: true },
-    { key: 'description', label: 'Description', visible: true },
-    { key: 'difficultyLevel', label: 'Difficulty Level', visible: true },
-    { key: 'targetArea', label: 'Target Area', visible: true },
-    { key: 'daysPerWeek', label: 'Days Per Week', visible: true },
-    { key: 'duration', label: 'Duration (Minutes)', visible: true },
-    { key: 'createdAt', label: 'Created At', visible: true },
-    { key: 'action', label: 'Action', visible: true }
-  ];
 
-  constructor(private readonly workoutService: WorkoutService) { }
+
+  constructor(private readonly workoutService: WorkoutService,private readonly workoutRequest:WorkoutrequestService) { }
 
   ngOnInit(): void {
-
+    this.userId= localStorage.getItem('id');
     this.getWorkouts();
   }
 
@@ -45,6 +39,7 @@ export class UserviewworkoutComponent implements OnInit {
         console.log('Fetched workouts:', data);
         this.workouts = data;
         this.filteredWorkouts = [...data];
+        this.getAppliedWorkouts(this.userId)
         this.updatePagination();
       },
       error: (err) => {
@@ -52,6 +47,19 @@ export class UserviewworkoutComponent implements OnInit {
       }
     });
   }
+  getAppliedWorkouts(userId: string | null): void {
+    if (!userId) return;
+
+    this.workoutRequest.getAppliedWorkouts(userId).subscribe({
+        next: (appliedWorkouts) => {
+            this.appliedWorkouts = new Set(appliedWorkouts.map(workout => workout.workoutId._id));
+        },
+        error: (err) => {
+            console.error('Failed to fetch applied workouts', err);
+        }
+    });
+}
+
 
   openDeleteModal(id: string): void {
     this.selectedWorkoutId = id;
@@ -91,9 +99,7 @@ export class UserviewworkoutComponent implements OnInit {
     this.updatePagination();
   }
 
-  isColumnVisible(key: string): boolean {
-    return this.columnSettings.find(col => col.key === key)?.visible || false;
-  }
+
 
   // Pagination methods
   updatePagination(): void {

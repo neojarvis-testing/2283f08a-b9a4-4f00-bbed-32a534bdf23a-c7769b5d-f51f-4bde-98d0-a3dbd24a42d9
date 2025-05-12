@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ElementRef,ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import * as bootstrap from 'bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
@@ -10,6 +10,9 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
+  @ViewChild('successModal') successModal!: ElementRef;
+
   model = {
     email: '',
     password: ''
@@ -35,7 +38,7 @@ export class LoginComponent {
   }
 
   showSuccessModal() {
-    const modal = new bootstrap.Modal(document.getElementById('successModal')!);
+    const modal = new bootstrap.Modal(this.successModal.nativeElement);
     modal.show();
   }
 
