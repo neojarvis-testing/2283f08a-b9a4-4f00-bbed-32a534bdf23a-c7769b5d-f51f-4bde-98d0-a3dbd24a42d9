@@ -33,7 +33,8 @@ export class AdminaddworkoutComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    //throw new Error("ngOnInit() cannot be performed because ...");
+    console.log('ngOnInit is working..');
+    
 }
 
   get admin() {

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'angularapp';
   currentUrl: string = ''
-  constructor(private router: Router) {
+  constructor(private readonly router: Router) {
   }
   ngOnInit() {
     this.router.events.subscribe(() => {
