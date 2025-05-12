@@ -23,7 +23,7 @@
   padding: 0px;
   display: flex;
   justify-content: center;
-  align-items: start;
+  flex: start;
 }
 
 .custom-header {
