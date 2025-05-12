@@ -28,3 +28,16 @@
 .custom-modal .modal-footer{
   border-top: none;
 }
+.bg{
+  background-image: url('https://tinyurl.com/454279kz');
+  background-repeat: no-repeat;
+  background-size: cover; /* Ensures it covers the entire area */
+  background-position: center; /* Centers the image */
+  min-height:100vh ;
+  width: 100%;
+  margin:0;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  flex: start;
+}
