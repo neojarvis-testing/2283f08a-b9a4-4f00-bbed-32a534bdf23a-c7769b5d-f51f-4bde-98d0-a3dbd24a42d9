@@ -35,8 +35,12 @@ async function getWorkoutById(req, res) {
 //Admin can add newWorkouts
 async function addWorkout(req, res) {
     try {
-       const workout = new Workout(req.body)
-       await workout.save()
+        const {workoutName}=req.body;
+        const existingWorkout=await Workout.findOne({workoutName});
+        if(existingWorkout){
+            return res.status(400).json({message:'Workout with the same name already exists'});
+        }
+       const workout = await Workout.create(req.body)
         return res.status(200).json({message:"Workout Added Successfully",data:workout});
     } catch (error) {
         return res.status(500).json({ message: error.message });
