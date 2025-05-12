@@ -1,53 +1,59 @@
 app-usernav {
   position: relative;
-  z-index: 10; /* Adjust as needed */
+  z-index: 10;
+  /* Adjust as needed */
 }
 
-.form-line{
-  border:none;
+.form-line {
+  border: none;
   border-bottom: 2px solid #ccc;
   border-radius: 0;
   outline: none;
-  width:100%;
+  width: 100%;
   padding: 6px 0;
   background: transparent;
   font-size: 1rem;
 }
-.form-line:focus{
+
+.form-line:focus {
   border-color: #28a745;
   box-shadow: none;
 }
-.btn-success{
+
+.btn-success {
   border-radius: 6px;
   font-weight: 500;
 }
+
 input.form-line,
 select.form-line {
-border: none;
-border-bottom: 2px solid #ccc;
-outline: none;
-width: 100%;
-padding: 5px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+  width: 100%;
+  padding: 5px;
 }
 
 input.form-line:focus,
 select.form-line:focus {
-border-bottom: 2px solid green;
+  border-bottom: 2px solid green;
 }
 
 input.is-invalid,
 select.is-invalid {
-border-bottom: 2px solid red !important;
+  border-bottom: 2px solid red !important;
 }
+
 .custom-modal {
-  border:none;
+  border: none;
   box-shadow: none;
-  width:300px;
-  margin:auto;
+  width: 300px;
+  margin: auto;
 }
 
 .custom-header {
-  background-color: #28a745; /* Bootstrap green */
+  background-color: #28a745;
+  /* Bootstrap green */
   border-bottom: none;
   padding: 1rem;
 }
@@ -63,23 +69,27 @@ border-bottom: 2px solid red !important;
 .custom-ok-btn:hover {
   background-color: #218838;
 }
-.custom-modal .modal-footer{
+
+.custom-modal .modal-footer {
   border-top: none;
 }
+
 .container {
   position: relative;
-z-index: 1;
-background-color: rgba(255, 255green, 255, 0.9);
-border-radius: 10px;
-padding: 20px;
+  z-index: 1;
+  background-color: rgba(255, 255green, 255, 0.9);
+  border-radius: 10px;
+  padding: 20px;
 }
+
 .page-wrapper {
   background-image: url('https://tinyurl.com/454279kz');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  min-height: 100vh; /* Ensures it covers the full height */
+  min-height: 100vh;
+  /* Ensures it covers the full height */
   width: 100%;
   position: absolute;
   top: 0;
