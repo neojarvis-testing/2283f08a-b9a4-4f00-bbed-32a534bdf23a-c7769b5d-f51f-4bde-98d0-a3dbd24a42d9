@@ -10,7 +10,7 @@ const sanitizeHtml=require('sanitize-html')
 async function getUserByEmailAndPassword(req, res) {
     try {
         let { email, password } = req.body;
-        email=email.toString()
+        // email=email.toString()
         const user = await User.findOne({ email:sanitizeHtml(email)});
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
@@ -37,11 +37,11 @@ async function getUserByEmailAndPassword(req, res) {
 async function addUser(req, res) {
     try {
         let { userName, email, mobile, password, role } = req.body;
-        userName=userName.toString()
-        email=email.toString()
-        mobile=mobile.toString()
-        password=password.toString()
-        role=role.toString()
+        // userName=userName.toString()
+        // email=email.toString()
+        // mobile=mobile.toString()
+        // password=password.toString()
+        // role=role.toString()
         const hashedPassword = await bcrypt.hash(password, 12);
         await User.create({ userName, email, mobile, password: hashedPassword, role });
         return res.status(200).json({ message: 'Success' });

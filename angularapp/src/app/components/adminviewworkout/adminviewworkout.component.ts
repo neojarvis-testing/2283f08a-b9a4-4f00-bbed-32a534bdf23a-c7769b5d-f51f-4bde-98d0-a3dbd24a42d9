@@ -41,12 +41,15 @@ export class AdminviewworkoutComponent implements OnInit {
     this.workoutService.getAllWorkouts().subscribe({
       next: (data) => {
         console.log('Fetched workouts:', data);
-        this.workouts = data;
-        this.filteredWorkouts = data;
+        this.workouts = Array.isArray(data) ? data:[];
+        this.filteredWorkouts = [...this.workouts];
         this.updatePagination();
       },
       error: (err) => {
         console.error('Failed to fetch workouts', err);
+        this.workouts=[];
+        this.filteredWorkouts=[];
+        this.updatePagination();
       }
     });
   }
@@ -99,7 +102,10 @@ export class AdminviewworkoutComponent implements OnInit {
 
   // Pagination methods
   updatePagination(): void {
+    this.filteredWorkouts=Array.isArray(this.filteredWorkouts)? this.filteredWorkouts:[];
+
     this.totalPages = Math.ceil(this.filteredWorkouts.length / this.itemsPerPage);
+    this.currentPage=Math.max(1,Math.min(this.currentPage,this.totalPages))
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.paginatedWorkouts = this.filteredWorkouts.slice(startIndex, endIndex);

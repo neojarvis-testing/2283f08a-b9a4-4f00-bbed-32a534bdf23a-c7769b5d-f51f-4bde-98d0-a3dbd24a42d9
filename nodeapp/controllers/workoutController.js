@@ -42,12 +42,12 @@ async function addWorkout(req, res) {
             return res.status(400).json({message:'*Workout with the same name already exists'});
         }
         let {description,difficultyLevel,targetArea,daysPerWeek,averageWorkoutDurationInMinutes,createdAt}=req.body;
-        description=description.toString();
-        difficultyLevel=difficultyLevel.toString();
-        targetArea=targetArea.toString();
-        daysPerWeek=daysPerWeek.toString();
-        averageWorkoutDurationInMinutes=averageWorkoutDurationInMinutes.toString();
-        createdAt=createdAt.toString();
+        // description=description.toString();
+        // difficultyLevel=parseInt(difficultyLevel);
+        // targetArea=targetArea.toString();
+        // daysPerWeek=parseInt(daysPerWeek);
+        // averageWorkoutDurationInMinutes=parseInt(averageWorkoutDurationInMinutes);
+        // createdAt=createdAt.toString();
        const workout = await Workout.create({workoutName,description,difficultyLevel,targetArea,daysPerWeek,averageWorkoutDurationInMinutes,createdAt})
         return res.status(200).json({message:"Workout Added Successfully",data:workout});
     } catch (error) {

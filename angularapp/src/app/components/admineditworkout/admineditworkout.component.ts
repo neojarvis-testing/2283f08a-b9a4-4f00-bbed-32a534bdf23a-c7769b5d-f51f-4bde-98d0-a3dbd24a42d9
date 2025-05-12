@@ -20,10 +20,10 @@ export class AdmineditworkoutComponent implements OnInit {
     this.workoutForm = this.fb.group({
       workoutName: ['', Validators.required],
       description: ['', Validators.required],
-      difficultyLevel: [0, Validators.required],
+      difficultyLevel: [0, [Validators.required,Validators.min(1),Validators.max(10)]],
       targetArea: ['', Validators.required],
       daysPerWeek: [0, [Validators.required,this.daysPerWeekValidator]],
-      averageWorkoutDurationInMinutes: [0, Validators.required]
+      averageWorkoutDurationInMinutes: [0, [Validators.required,Validators.min(1),Validators.max(60)]]
     });
   }
   daysPerWeekValidator(control:AbstractControl):ValidationErrors|null{
