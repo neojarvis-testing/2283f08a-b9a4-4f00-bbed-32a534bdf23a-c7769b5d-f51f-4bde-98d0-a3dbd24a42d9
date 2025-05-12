@@ -79,7 +79,7 @@ export class LoginComponent {
       },
       error: (error) => {
         this.loginError = 'Invalid Email or Password';
-      }
+              }
     });
   }
 

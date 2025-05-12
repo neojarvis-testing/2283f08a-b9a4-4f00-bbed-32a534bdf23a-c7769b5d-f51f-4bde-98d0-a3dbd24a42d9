@@ -11,6 +11,8 @@ import { RequestedworkoutComponent } from './components/requestedworkout/request
 import { UserworkoutformComponent } from './components/userworkoutform/userworkoutform.component';
 import { UserviewworkoutComponent } from './components/userviewworkout/userviewworkout.component';
 import { UserappliedworkoutComponent } from './components/userappliedworkout/userappliedworkout.component';
+import { AppComponent } from './app.component';
+
 
 const routes: Routes = [
   {path:'home-page',component:HomePageComponent},
@@ -23,8 +25,8 @@ const routes: Routes = [
   {path:'userappliedworkout/:id',component:UserappliedworkoutComponent},
   {path:'userviewworkout',component:UserviewworkoutComponent},
   {path:'userworkoutform/:id',component:UserworkoutformComponent},
-  {path:'',redirectTo:'/login',pathMatch:'full'},
-  {path:'**',component:ErrorComponent},
+  {path:'',component:AppComponent},
+  {path:'**',component: ErrorComponent}
 ];
 
 @NgModule({

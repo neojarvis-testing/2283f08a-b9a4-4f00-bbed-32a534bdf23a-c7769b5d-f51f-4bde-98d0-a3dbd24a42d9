@@ -10,13 +10,12 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' })); // Set a suitabl
 app.use(express.urlencoded({ extended: true }));
 const cors = require("cors"); // Import the cors package
 const corsOptions = {
-  origin: "https://8081-eacbcaeabdfdcaebfcecdacbdffbdedadbdad.premiumproject.examly.io", // Replace with the URL of your frontend application
+  origin: "https://8081-deeebbdbbbcdfcaebfcecdacbdffbdedadbdad.project.examly.io", // Replace with the URL of your frontend application
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   allowedHeaders: "Content-Type,Authorization",
   exposedHeaders: "Content-Type,X-Powered-By",
   credentials: true
 };
-
 
 // Enable CORS with the specified options
 app.use(cors(corsOptions));
