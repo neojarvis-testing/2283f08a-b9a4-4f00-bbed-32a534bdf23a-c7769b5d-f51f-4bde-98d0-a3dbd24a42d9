@@ -13,6 +13,7 @@ import { UserviewworkoutComponent } from './components/userviewworkout/uservieww
 import { UserappliedworkoutComponent } from './components/userappliedworkout/userappliedworkout.component';
 import { AuthguardGuard } from './components/authguard/authguard.guard';
 import { Authguard1Guard } from './components/authguard/authguard1.guard';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {path:'home-page',component:HomePageComponent},
@@ -25,7 +26,7 @@ const routes: Routes = [
   {path:'userappliedworkout/:id',component:UserappliedworkoutComponent,canActivate:[AuthguardGuard]},
   {path:'userviewworkout',component:UserviewworkoutComponent,canActivate:[AuthguardGuard]},
   {path:'userworkoutform/:id',component:UserworkoutformComponent,canActivate:[AuthguardGuard]},
-  {path:'',redirectTo:'/login',pathMatch:'full'},
+  {path:'',component:AppComponent},
   {path:'**',component:ErrorComponent}
 ];
 
