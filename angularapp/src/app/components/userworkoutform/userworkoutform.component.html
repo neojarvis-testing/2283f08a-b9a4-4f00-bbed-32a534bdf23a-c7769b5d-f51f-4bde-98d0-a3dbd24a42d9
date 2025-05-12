@@ -1,97 +1,91 @@
 <app-usernav></app-usernav>
+<div class="page-wrapper">
 
-<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content custom-modal">
-      <div class="modal-body text-center">
-      Successfully Added!
-      </div>
-      <div class="modal-footer justify-content-center">
-        <button type="button" class="btn custom-ok-btn" data-bs-dismiss="modal" routerLink="/userviewworkout">OK</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-5">
-        <div class="card px-4 py-3 shadow">
-            <div class="d-flex justify-content-end mb-1">
-          <button class="btn btn-sm btn-primary"(click)="goBack()">Back</button>
-          </div>
-          <h3 class="fw-bold mb-0 text-center">Workout Application Form</h3>
-  
-          <form [formGroup]="form" (ngSubmit)="onSubmit()"class="mt-3">
-  
-            <div class="mb-2">
-              <label>Age <span class="text-danger">*</span></label>
-              <input formControlName="age" type="number" class="form-line" 
-           [ngClass]="{'is-invalid': f.age.touched && f.age.errors}" />
-              <div *ngIf="f.age.touched && f.age.errors" class="text-danger">
-                Age is required
-              </div>
-            </div>
-  
-            <div class="mb-2">
-              <label>BMI <span class="text-danger">*</span></label>
-              <input formControlName="bmi" type="number" step="any" class="form-line" 
-              [ngClass]="{'is-invalid': f.bmi.touched && f.bmi.errors}" />
-              <div *ngIf="f.bmi.touched && f.bmi.errors" class="text-danger">
-                Bmi is required
-              </div>
-            </div>
-  
-            <div class="mb-2">
-              <label>Gender <span class="text-danger">*</span></label>
-              <select formControlName="gender" class="form-line" 
-            [ngClass]="{'is-invalid': f.gender.touched && f.gender.errors}">
-                <option value="">Select Gender</option>
-                <option>Male</option>
-                <option>Female</option>
-              </select>
-              <div *ngIf="f.gender.touched && f.gender.errors" class="text-danger">
-                Gender is required
-              </div>
-            </div>
-  
-            <div class="mb-2">
-              <label>Dietary Preference <span class="text-danger">*</span></label>
-              <select formControlName="dietaryPreferences" class="form-line" 
-              [ngClass]="{'is-invalid': f.dietaryPreferences.touched && f.dietaryPreferences.errors}">
-                <option value="">Select Dietary Preference</option>
-                <option>No preference</option>
-                <option>Vegetarian</option>
-                <option>Vegan</option>
-              </select>
-              <div *ngIf="f.dietaryPreferences.touched && f.dietaryPreferences.errors" class="text-danger">
-                Dietry Preference is required
-              </div>
-            </div>
-  
-            <div class="mb-2">
-              <label>Medical History <span class="text-danger">*</span></label>
-              <select formControlName="medicalHistory" class="form-line" [ngClass]="{'is-invalid': f.medicalHistory.touched && f.medicalHistory.errors}">
-                <option value="">Select Medical History</option>
-                <option>None</option>
-                <option>Diabetes</option>
-                <option>Heart Issue</option>
-              </select>
-              <div *ngIf="f.medicalHistory.touched && f.medicalHistory.errors" class="text-danger">
-                Medical History is required
-              </div>
-            </div>
-           
-            <div *ngIf="errorMessage" class="text-danger text-center mb-2">{{ errorMessage }}</div>
-            <div class="mt-2">
-              <button type="submit" class="btn btn-success px-4">Submit</button>
-            </div>
-           
-  
-           
-  
-          </form>
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content custom-modal">
+        <div class="modal-body text-center">
+          Successfully Added!
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn custom-ok-btn" data-bs-dismiss="modal">OK</button>
         </div>
       </div>
     </div>
   </div>
-  
+  <div class="container d-flex justify-content-center align-item-center m-5">
+    <div class="card px-4 py-3 w-50 shadow mt-4">
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-primary" routerLink="/userviewworkout">Back</button>
+      </div>
+      <h4 class="mb-0 text-center">Workout Application Form</h4>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-3">
+
+        <div class="mb-2">
+          <label for="age">Age <span class="text-danger">*</span></label>
+          <input id="age" formControlName="age" type="number" class="form-line"
+            [ngClass]="{'is-invalid': f.age.touched && f.age.errors}" />
+          <div *ngIf="f.age.touched && f.age.errors" class="text-danger">
+            Age is required
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label for="bmi">BMI <span class="text-danger">*</span></label>
+          <input id="bmi" formControlName="bmi" type="number" step="any" class="form-line"
+            [ngClass]="{'is-invalid': f.bmi.touched && f.bmi.errors}" />
+          <div *ngIf="f.bmi.touched && f.bmi.errors" class="text-danger">
+            Bmi is required
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label for="gender">Gender <span class="text-danger">*</span></label>
+          <select id="gender" formControlName="gender" class="form-line mt-2"
+            [ngClass]="{'is-invalid': f.gender.touched && f.gender.errors}">
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+          <div *ngIf="f.gender.touched && f.gender.errors" class="text-danger">
+            Gender is required
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label for="dietaryPreferences">Dietary Preference <span class="text-danger">*</span></label>
+          <select id="dietaryPreferences" formControlName="dietaryPreferences" class="form-line mt-2"
+            [ngClass]="{'is-invalid': f.dietaryPreferences.touched && f.dietaryPreferences.errors}">
+            <option value="">Select Dietary Preference</option>
+            <option>No preference</option>
+            <option>Vegetarian</option>
+            <option>Vegan</option>
+          </select>
+          <div *ngIf="f.dietaryPreferences.touched && f.dietaryPreferences.errors" class="text-danger">
+            Dietry Preference is required
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label for="medicalHistory">Medical History <span class="text-danger">*</span></label>
+          <select id="medicalHistory" formControlName="medicalHistory" class="form-line my-2"
+            [ngClass]="{'is-invalid': f.medicalHistory.touched && f.medicalHistory.errors}">
+            <option value="">Select Medical History</option>
+            <option>None</option>
+            <option>Diabetes</option>
+            <option>Heart Issue</option>
+          </select>
+          <div *ngIf="f.medicalHistory.touched && f.medicalHistory.errors" class="text-danger">
+            Medical History is required
+          </div>
+        </div>
+
+        <div *ngIf="errorMessage" class="text-danger text-start mb-2">{{ errorMessage }}</div>
+        <div class="my-2">
+          <button type="submit" class="btn btn-success px-4">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

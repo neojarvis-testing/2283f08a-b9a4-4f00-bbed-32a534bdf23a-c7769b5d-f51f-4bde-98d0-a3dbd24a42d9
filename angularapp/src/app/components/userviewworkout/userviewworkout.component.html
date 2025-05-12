@@ -1,44 +1,48 @@
 <app-usernav></app-usernav>
-  <div class="container mt-4">
-    <h2 class="text-center mb-4">Available Workouts</h2>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Available Workouts</h2>
 
-    <div class="input-group mb-3">
-      <div style="width:250px; box-shadow: 0 2px 6px rgba(0,0,0,0.3);border-radius: 5px;">
-        <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm" (input)="search()" />
-      </div>
+  <div class="input-group mb-3">
+    <div style="width:250px; box-shadow: 0 2px 6px rgba(0,0,0,0.3);border-radius: 5px;">
+      <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm" (input)="search()" />
     </div>
-
-    <table class="table table-bordered table-striped text-center">
-      <thead class="table-primary">
-        <tr>
-          <th>S.No</th>
-          <th>Workout Name</th>
-          <th>Description</th>
-          <th>Difficulty Level</th>
-          <th>Target Area</th>
-          <th>Days Per Week</th>
-          <th>Duration (Minutes)</th>
-          <th>Created At</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngIf="filteredWorkouts.length === 0">
-          <td colspan="9">Oops! No records found</td>
-        </tr>
-        <tr *ngFor="let workout of filteredWorkouts; let i = index">
-          <td>{{ i + 1 }}</td>
-          <td>{{ workout.workoutName }}</td>
-          <td>{{ workout.description }}</td>
-          <td>{{ workout.difficultyLevel }}</td>
-          <td>{{ workout.targetArea }}</td>
-          <td>{{ workout.daysPerWeek }}</td>
-          <td>{{ workout.averageWorkoutDurationInMinutes }}</td>
-          <td>{{ workout.createdAt | date:'MM/dd/yy' }}</td>
-          <td>
-            <button class="btn btn-success btn-sm" routerLink="/userworkoutform/{{workout._id}}">Apply</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
   </div>
+
+  <table class="table table-bordered table-striped text-center">
+    <thead class="table-primary">
+      <tr>
+        <th>S.No</th>
+        <th>Workout Name</th>
+        <th>Description</th>
+        <th>Difficulty Level</th>
+        <th>Target Area</th>
+        <th>Days Per Week</th>
+        <th>Duration (Minutes)</th>
+        <th>Created At</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="filteredWorkouts.length === 0">
+        <td colspan="9">Oops! No records found</td>
+      </tr>
+      <tr *ngFor="let workout of filteredWorkouts; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ workout.workoutName }}</td>
+        <td>{{ workout.description }}</td>
+        <td>{{ workout.difficultyLevel }}</td>
+        <td>{{ workout.targetArea }}</td>
+        <td>{{ workout.daysPerWeek }}</td>
+        <td>{{ workout.averageWorkoutDurationInMinutes }}</td>
+        <td>{{ workout.createdAt | date:'MM/dd/yy' }}</td>
+        <td>
+          <button *ngIf="!appliedWorkouts.has(workout._id)" class="btn btn-success btn-sm" routerLink="/userworkoutform/{{workout._id}}">Apply</button>
+          <button *ngIf="appliedWorkouts.has(workout._id)" class="btn btn-danger btn-sm" disabled>
+            Applied
+          </button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Workout } from 'src/app/models/workout.model';
 import { WorkoutService } from 'src/app/services/workout.service';
+import { WorkoutrequestService } from 'src/app/services/workoutrequest.service';
 declare var bootstrap:any;
 
 @Component({
@@ -13,10 +14,13 @@ export class UserviewworkoutComponent implements OnInit {
   filteredWorkouts: Workout[] = [];
   searchTerm: string = '';
   selectedWorkoutId:string|null=null;
+  appliedWorkouts: Set<string> = new Set();
+  userId:string
 
-  constructor(private workoutService: WorkoutService) { }
+  constructor(private workoutService: WorkoutService,private workoutRequest:WorkoutrequestService) { }
 
   ngOnInit(): void {
+    this.userId= localStorage.getItem('id');
     this.getWorkouts();
   }
 
@@ -26,6 +30,7 @@ export class UserviewworkoutComponent implements OnInit {
        console.log('Fetched workouts:',data);
        this.workouts=data;
        this.filteredWorkouts=data
+       this.getAppliedWorkouts(this.userId)
      },
      error: (err)=>{
        console.error('Failed to fetch workouts',err);
@@ -65,6 +70,18 @@ export class UserviewworkoutComponent implements OnInit {
        workout.description.toLowerCase().includes(term)
      );
      }
+     getAppliedWorkouts(userId: string | null): void {
+      if (!userId) return;
+  
+      this.workoutRequest.getAppliedWorkouts(userId).subscribe({
+          next: (appliedWorkouts) => {
+              this.appliedWorkouts = new Set(appliedWorkouts.map(workout => workout.workoutId._id));
+          },
+          error: (err) => {
+              console.error('Failed to fetch applied workouts', err);
+          }
+      });
+  }
  }
 
 

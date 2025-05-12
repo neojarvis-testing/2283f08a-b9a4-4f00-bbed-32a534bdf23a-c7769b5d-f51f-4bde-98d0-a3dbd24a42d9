@@ -1,0 +1,174 @@
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(1.2) contrast(1.1) saturate(1.3);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.content {
+    text-align: center;
+    color: white;
+}
+
+.content h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+    animation: fadeIn 2s ease-in-out;
+}
+
+.content p {
+    font-size: 1.2rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fallDown {
+    0% { opacity: 0; transform: translateY(-100px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.content h1, 
+.content p, 
+.content a {
+    animation: fallDown 1.5s ease-in-out;
+}
+
+/* Buttons Styling */
+.btn-primary {
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    color: white;
+}
+
+.btn-primary[routerLink="/signup"], 
+.btn-primary[routerLink="/login"] {
+    background-color: #f39c12; /* Fitness orange */
+    border: 2px solid #e67e22; /* Slightly darker border */
+}
+
+.btn-primary[routerLink="/signup"]:hover, 
+.btn-primary[routerLink="/login"]:hover {
+    background-color: #e67e22; /* Deeper orange */
+    border-color: #d35400;
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+.nav-link.btn-primary[routerLink="/login"] {
+    font-size: 1rem; /* Decrease font size */
+    padding: 8px 18px; /* Reduce padding */
+}
+.btn-primary[routerLink="/signup"] {
+    font-size: 1.1rem; /* Slightly smaller text */
+    padding: 10px 22px; /* Reducing padding just a little */
+}
+.btn-primary {
+    font-size: 0.9rem; /* Slightly smaller size */
+    padding: 8px 18px; /* Reduced padding */
+    background-color: #f39c12; /* Orange background */
+    border: 2px solid #e67e22; /* Subtle darker border */
+    color: white;
+    text-transform: uppercase; /* Keeps bold styling */
+    transition: all 0.3s ease-in-out;
+}
+.btn-primary:hover {
+    background-color: #e67e22; /* Deeper orange on hover */
+    border-color: #d35400;
+    transform: scale(1.05);
+}
+.navbar-scrolled {
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: background-color 0.3s ease-in-out;
+}
+.btn-warning {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+}
+.modal-dialog {
+    max-width: 450px; /* Decrease modal width */
+    border-radius: 8px; /* Smooth edges */
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.9); /* Light, subtle transparent background */
+    border-radius: 10px;
+    color: #333; /* Darker text for readability */
+    padding: 15px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Soft depth */
+}
+
+.modal-header {
+    border-bottom: 1px solid #ddd; /* Lighter separator */
+}
+
+.modal-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #222; /* Orange accent */
+    text-transform: none;
+}
+.modal-body {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #444; /* Softer dark gray for easy reading */
+}
+.modal-footer {
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Close Button */
+.btn-close {
+    filter: invert(0.7); /* Light contrast for better visibility */
+}
+
+/* Modal Appearance Animation */
+.modal.fade .modal-dialog {
+    transform: translateY(-40px);
+    transition: all 0.3s ease-in-out;
+}
+
+.modal.show .modal-dialog {
+    transform: translateY(0);
+}
+
+/* Button Inside Modal */
+.modal-footer .btn-secondary {
+    background-color: #f39c12; /* Fitness-themed orange */
+    border: none;
+    padding: 8px 18px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #e67e22;
+    transform: scale(1.05);
+}

@@ -3,9 +3,27 @@
   box-shadow: none;
   width:300px;
   margin:auto;
-}
+ }
+ html,body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+ }
 .validation-space {
   min-height: 20px;
+}
+.bg{
+  background-image: url('https://tinyurl.com/454279kz');
+  background-repeat: no-repeat;
+  background-size: cover; /* Ensures it covers the entire area */
+  background-position: center; /* Centers the image */
+  min-height:100vh ;
+  width: 100%;
+  margin:0;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
 }
 
 .custom-header {
