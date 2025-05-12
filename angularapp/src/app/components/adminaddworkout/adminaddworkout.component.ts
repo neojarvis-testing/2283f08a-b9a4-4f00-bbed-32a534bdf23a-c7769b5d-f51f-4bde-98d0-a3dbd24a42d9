@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { WorkoutService } from 'src/app/services/workout.service';
-declare var bootstrap: any;
+declare let bootstrap: any;
 
 
 @Component({
@@ -14,14 +14,14 @@ export class AdminaddworkoutComponent implements OnInit {
   submitted = false;
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private workoutService: WorkoutService) {
+  constructor(private readonly fb: FormBuilder, private readonly workoutService: WorkoutService) {
     this.workoutForm = this.fb.group({
       workoutName: ['', Validators.required],
       description: ['', Validators.required],
-      difficultyLevel: [0, Validators.required],
+      difficultyLevel: [0, [Validators.required,Validators.min(1),Validators.max(10)]],
       targetArea: ['', Validators.required],
       daysPerWeek: [0,[Validators.required,this.daysPerWeekValidator]],
-      averageWorkoutDurationInMinutes: [0, Validators.required]
+      averageWorkoutDurationInMinutes: [0, [Validators.required,Validators.min(1),Validators.max(60)]]
     });
   }
    daysPerWeekValidator(control:AbstractControl):ValidationErrors|null{
@@ -33,10 +33,10 @@ export class AdminaddworkoutComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    
+    //throw new Error("ngOnInit() cannot be performed because ...");
 }
 
-  get f() {
+  get admin() {
     return this.workoutForm.controls;
   }
 
@@ -64,7 +64,7 @@ export class AdminaddworkoutComponent implements OnInit {
         modal.show();
       },
       error: (err) => {
-        if (err?.error?.message === 'Workout with the same name already exists') {
+        if (err?.error?.message === '*Workout with the same name already exists') {
           this.errorMessage = err.error.message;
         } else {
           this.errorMessage = 'Something went wrong';

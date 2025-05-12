@@ -15,7 +15,7 @@ export class RequestedworkoutComponent implements OnInit {
   filterStatus: string = '';
   searchTerm: string = '';
   
-  constructor(private workoutService: WorkoutrequestService) { }
+  constructor(private readonly workoutService: WorkoutrequestService) { }
 
   ngOnInit(): void {
     this.fetchAllWorkouts();

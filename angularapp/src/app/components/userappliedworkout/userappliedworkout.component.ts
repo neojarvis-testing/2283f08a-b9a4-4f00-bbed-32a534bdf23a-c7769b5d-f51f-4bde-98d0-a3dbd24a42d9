@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Workoutrequest } from 'src/app/models/workoutrequest.model';
 import { WorkoutrequestService } from 'src/app/services/workoutrequest.service';
-declare var bootstrap:any;
+declare let bootstrap:any;
 
 @Component({
   selector: 'app-userappliedworkout',
@@ -17,7 +17,7 @@ export class UserappliedworkoutComponent implements OnInit {
   searchTerm: string = '';
   selectedWorkoutId:string|null=null;
 
-  constructor(private service: WorkoutrequestService, private route: ActivatedRoute) { }
+  constructor(private readonly service: WorkoutrequestService, private readonly route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.params['id'];

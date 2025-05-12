@@ -54,24 +54,16 @@
           <td>{{ request.requestStatus }}</td>
           <td class="text-center">
             <button class="btn btn-primary btn-sm mx-2" (click)="showDetails(request)">Show More</button>
-          
-            <!-- Approve button -->
-            <button
-              *ngIf="request.requestStatus === 'Pending' || request.requestStatus === 'Rejected'"
-              class="btn btn-success btn-sm mx-2"
+            <button class="btn btn-success btn-sm mx-2" [disabled]="request.requestStatus === 'Approved'"
               (click)="approveRequest(request._id)">
               Approve
             </button>
-          
-            <!-- Reject button -->
-            <button
-              *ngIf="request.requestStatus === 'Pending' || request.requestStatus === 'Approved'"
-              class="btn btn-danger btn-sm mx-2"
+
+            <button class="btn btn-danger btn-sm mx-2" [disabled]="request.requestStatus === 'Rejected'"
               (click)="rejectRequest(request._id)">
               Reject
             </button>
           </td>
-          
         </tr>
         <tr *ngIf="filteredRequests.length === 0">
           <td colspan="11" class="text-center fw-bold text-danger">Oops! No records found!</td>
@@ -100,3 +92,4 @@
     </div>
   </div>
 </div>
+

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Workout } from 'src/app/models/workout.model';
 import { WorkoutService } from 'src/app/services/workout.service';
-declare var bootstrap:any;
+declare let bootstrap:any;
 
 @Component({
   selector: 'app-adminviewworkout',
@@ -25,7 +25,7 @@ export class AdminviewworkoutComponent implements OnInit {
     { key: 'action', label: 'Action', visible: true }
   ];
 
-  constructor(private workoutService: WorkoutService) {}
+  constructor(private readonly workoutService: WorkoutService) {}
 
   ngOnInit(): void {
     this.getWorkouts();
