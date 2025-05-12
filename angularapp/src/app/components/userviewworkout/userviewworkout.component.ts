@@ -35,7 +35,7 @@ export class UserviewworkoutComponent implements OnInit {
   constructor(private readonly workoutService: WorkoutService) { }
 
   ngOnInit(): void {
-    this.userId= localStorage.getItem('id');
+
     this.getWorkouts();
   }
 
