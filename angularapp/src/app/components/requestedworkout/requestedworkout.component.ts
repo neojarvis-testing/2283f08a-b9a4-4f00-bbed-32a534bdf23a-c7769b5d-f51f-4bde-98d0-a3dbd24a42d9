@@ -11,10 +11,16 @@ import * as bootstrap from 'bootstrap';
 export class RequestedworkoutComponent implements OnInit {
   workoutRequests: Workoutrequest[] = [];
   filteredRequests: Workoutrequest[] = [];
+  paginatedRequests: Workoutrequest[] = [];
   selectedWorkout: Workoutrequest | null = null;
   filterStatus: string = '';
   searchTerm: string = '';
   
+  // Pagination variables
+  currentPage: number = 1;
+  itemsPerPage: number = 5;
+  totalPages: number = 1;
+
   constructor(private readonly workoutService: WorkoutrequestService) { }
 
   ngOnInit(): void {
@@ -26,6 +32,7 @@ export class RequestedworkoutComponent implements OnInit {
       next: (data) => {
         this.workoutRequests = data;
         this.filteredRequests = data;
+        this.updatePagination();
       },
       error: (err) => {
         console.error('Error fetching all workout requests:', err);
@@ -40,36 +47,90 @@ export class RequestedworkoutComponent implements OnInit {
         w.userId?.userName?.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
         w.workoutId?.workoutName?.toLowerCase().includes(this.searchTerm.toLowerCase()))
     );
+    this.currentPage = 1;
+    this.updatePagination();
   }
 
   approveRequest(id: string): void {
     const request = this.filteredRequests.find(r => r._id === id);
     if (request) {
-      request.requestStatus = 'Approved'; // Update locally for UI
+      request.requestStatus = 'Approved';
     }
   
     this.workoutService.updateWorkoutStatus(id, { requestStatus: 'Approved' } as Workoutrequest).subscribe(() => {
-      this.fetchAllWorkouts(); // Refresh from backend
+      this.fetchAllWorkouts();
     });
   }
   
   rejectRequest(id: string): void {
     const request = this.filteredRequests.find(r => r._id === id);
     if (request) {
-      request.requestStatus = 'Rejected'; // Update locally for UI
+      request.requestStatus = 'Rejected';
     }
   
     this.workoutService.updateWorkoutStatus(id, { requestStatus: 'Rejected' } as Workoutrequest).subscribe(() => {
-      this.fetchAllWorkouts(); // Refresh from backend
+      this.fetchAllWorkouts();
     });
   }
-  
-  
-
 
   showDetails(workout: Workoutrequest): void {
     this.selectedWorkout = workout;
     const modal = new bootstrap.Modal(document.getElementById('detailsModal')!);
     modal.show();
+  }
+
+  // Pagination methods
+  updatePagination(): void {
+    this.totalPages = Math.ceil(this.filteredRequests.length / this.itemsPerPage);
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedRequests = this.filteredRequests.slice(startIndex, endIndex);
+  }
+
+  previousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePagination();
+    }
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updatePagination();
+    }
+  }
+
+  goToPage(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.updatePagination();
+    }
+  }
+
+  getPageNumbers(): number[] {
+    const pages: number[] = [];
+    const maxVisiblePages = 5; // Maximum number of page numbers to show
+    
+    if (this.totalPages <= maxVisiblePages) {
+      for (let i = 1; i <= this.totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      // Show first, last and pages around current page
+      const half = Math.floor(maxVisiblePages / 2);
+      let start = Math.max(1, this.currentPage - half);
+      let end = Math.min(this.totalPages, start + maxVisiblePages - 1);
+      
+      if (end - start + 1 < maxVisiblePages) {
+        start = Math.max(1, end - maxVisiblePages + 1);
+      }
+      
+      for (let i = start; i <= end; i++) {
+        pages.push(i);
+      }
+    }
+    
+    return pages;
   }
 }

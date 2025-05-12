@@ -2,7 +2,7 @@ export interface Workoutrequest {
   _id?:string
   userId: { userName: string };
   workoutId: {
-    _id:string;
+    _id?:string;
     workoutName: string;
     description?: string;
     targetArea?: string;
