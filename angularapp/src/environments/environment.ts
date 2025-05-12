@@ -4,11 +4,7 @@
 
 export const environment = {
   production: false,
-  
-    backendUrl:'https://8080-adbefebabebcaebfcecdacbdffbdedadbdad.project.examly.io'
-  // backendUrl:'https://8080-dbcdbbdcdcfbcaebfcecdacbdffbdedadbdad.premiumproject.examly.io'
-  //backendUrl:'https://8080-eacbcaeabdfdcaebfcecdacbdffbdedadbdad.premiumproject.examly.io'
-  // backendUrl:'https://8080-deeebbdbbbcdfcaebfcecdacbdffbdedadbdad.premiumproject.examly.io'
+  backendUrl:'https://8080-eacbcaeabdfdcaebfcecdacbdffbdedadbdad.project.examly.io'
 };
 
 /*
@@ -18,3 +14,4 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
+
