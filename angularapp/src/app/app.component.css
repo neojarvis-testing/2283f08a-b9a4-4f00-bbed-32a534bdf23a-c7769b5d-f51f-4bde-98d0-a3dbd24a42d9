@@ -110,13 +110,17 @@
 }
 
 .btn-primary {
-    font-size: 1.2rem;
-    padding: 12px 24px;
-    color: white;
+    font-size: 0.9rem;
+    /* Slightly smaller size */
+    padding: 8px 18px;
+    /* Reduced padding */
     background-color: #f39c12;
+    /* Orange background */
     border: 2px solid #e67e22;
+    /* Subtle darker border */
     color: white;
     text-transform: uppercase;
+    /* Keeps bold styling */
     transition: all 0.3s ease-in-out;
 }
 

@@ -17,7 +17,6 @@ const corsOptions = {
   credentials: true
 };
 
-
 // Enable CORS with the specified options
 app.use(cors(corsOptions));
 mongoose
