@@ -31,6 +31,8 @@ export class AuthService {
     return this.http.post<any>(`${environment.backendUrl}/user/signup`, user);
   }
 
-
+  sendResetEmail(email: string) {
+    return this.http.post(`${environment.backendUrl}/auth/forgot-password`, { email });
+  }
 
 }

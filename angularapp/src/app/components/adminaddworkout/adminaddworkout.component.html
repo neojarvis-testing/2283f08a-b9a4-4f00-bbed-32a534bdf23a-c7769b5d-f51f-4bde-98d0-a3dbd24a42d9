@@ -61,7 +61,7 @@
           <div *ngIf="f.averageWorkoutDurationInMinutes.touched && f.averageWorkoutDurationInMinutes.errors" class="text-danger">Workout Duration is required</div>
         </div>
   
-        <div *ngIf="errorMessage" class="text-danger text-center mb-2">{{ errorMessage }}</div>
+        <div *ngIf="errorMessage" class="text-danger text-start mb-2">{{ errorMessage }}</div>
   
         <button class="btn btn-primary w-100">Submit</button>
       </form>
