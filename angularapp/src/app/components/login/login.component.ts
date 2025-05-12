@@ -17,7 +17,7 @@ export class LoginComponent {
   submitted = false;
   loginError: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private readonly router: Router, private readonly authService: AuthService) {}
 
   onSubmit(form: NgForm): void {
     this.submitted = true;

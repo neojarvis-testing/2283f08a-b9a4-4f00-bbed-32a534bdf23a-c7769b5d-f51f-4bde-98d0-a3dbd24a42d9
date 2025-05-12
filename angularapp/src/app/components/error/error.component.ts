@@ -10,6 +10,8 @@ export class ErrorComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    throw new Error("ngOnInit() cannot be performed because ...");
+
   }
 
 }

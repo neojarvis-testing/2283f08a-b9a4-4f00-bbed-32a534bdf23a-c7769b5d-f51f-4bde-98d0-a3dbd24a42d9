@@ -367,7 +367,6 @@ describe('workout_controller', () => {
     await workoutController.getWorkoutById(req, res);
 
     expect(res.status).toHaveBeenCalledWith(200);
-    // expect(res.json).toHaveBeenCalledWith(mockWorkout);
   });
 
   // Test case for workout not found by ID
@@ -382,7 +381,6 @@ describe('workout_controller', () => {
     await workoutController.getWorkoutById(req, res);
 
     expect(res.status).toHaveBeenCalledWith(404);
-    // expect(res.json).toHaveBeenCalledWith({ message: `Cannot find any Workout with ID ${req.params.id}` });
   });
 
   // Test case for internal server error when getting workout by ID
@@ -425,7 +423,6 @@ describe('workout_controller', () => {
     await workoutController.deleteWorkout(req, res);
 
     expect(res.status).toHaveBeenCalledWith(404);
-    // expect(res.json).toHaveBeenCalledWith({ message: `Cannot find any Workout with ID ${req.params.id}` });
   });
 
   // Test case for internal server error when trying to delete a workout
@@ -469,10 +466,6 @@ describe('workoutRequest_controller', () => {
     await workoutRequestController.addWorkoutRequest(req, res);
 
     expect(res.status).toHaveBeenCalledWith(200);
-    // expect(res.json).toHaveBeenCalledWith({
-    //   message: "Workout Request Added Successfully",
-    //   data: req.body
-    // });
   });
 
   // Test case for add workout request when error occurs
@@ -487,7 +480,6 @@ describe('workoutRequest_controller', () => {
     await workoutRequestController.addWorkoutRequest(req, res);
 
     expect(res.status).toHaveBeenCalledWith(500);
-    // expect(res.json).toHaveBeenCalledWith({ message: 'Internal Server Error' });
   });
 
   test('backend_getAllWorkoutRequests_should_return_200_status_code_with_workout_requests', async () => {
@@ -511,7 +503,6 @@ describe('workoutRequest_controller', () => {
     await workoutRequestController.getAllWorkoutRequests(req, res);
 
     expect(res.status).toHaveBeenCalledWith(200);
-    // expect(res.json).toHaveBeenCalledWith({ data: mockWorkoutRequests });
   });
 
   // Test case for internal server error in getAllWorkoutRequests
@@ -532,7 +523,6 @@ describe('workoutRequest_controller', () => {
     await workoutRequestController.getAllWorkoutRequests(req, res);
 
     expect(res.status).toHaveBeenCalledWith(500);
-    // expect(res.json).toHaveBeenCalledWith({ message: 'Internal Server Error' });
   });
 
   // Test case for updating a workout request successfully
@@ -559,10 +549,6 @@ describe('workoutRequest_controller', () => {
     await workoutRequestController.updateWorkoutRequest(req, res);
 
     expect(res.status).toHaveBeenCalledWith(200);
-    // expect(res.json).toHaveBeenCalledWith({
-    //   message: "Workout Request Updated Successfully",
-    //   data: req.body
-    // });
   });
 
   // Test case for workout request not found when updating
@@ -577,7 +563,6 @@ describe('workoutRequest_controller', () => {
     await workoutRequestController.updateWorkoutRequest(req, res);
 
     expect(res.status).toHaveBeenCalledWith(404);
-    // expect(res.json).toHaveBeenCalledWith({ message: `Cannot find Workout Request with ID ${req.params.id}` });
   });
 
   // Test case for internal server error when updating workout request
@@ -606,7 +591,6 @@ describe('workoutRequest_controller', () => {
     await workoutRequestController.deleteWorkoutRequest(req, res);
 
     expect(res.status).toHaveBeenCalledWith(200);
-    // expect(res.json).toHaveBeenCalledWith({ message: "Workout Request Deleted Successfully" });
   });
 
   // Test case for workout request not found when deleting
@@ -621,7 +605,6 @@ describe('workoutRequest_controller', () => {
     await workoutRequestController.deleteWorkoutRequest(req, res);
 
     expect(res.status).toHaveBeenCalledWith(404);
-    // expect(res.json).toHaveBeenCalledWith({ message: `Cannot find Workout Request with ID ${req.params.id}` });
   });
 
   // Test case for internal server error when deleting workout request

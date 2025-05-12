@@ -20,7 +20,7 @@ export class SignupComponent {
     role: ''
   };
 
-  constructor(private authService: AuthService) {}
+  constructor(private readonly authService: AuthService) {}
 
   onSubmit(form: NgForm) {
     this.submitted = true;
