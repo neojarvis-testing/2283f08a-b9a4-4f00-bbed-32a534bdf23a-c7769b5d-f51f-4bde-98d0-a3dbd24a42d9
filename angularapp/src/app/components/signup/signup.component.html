@@ -7,7 +7,7 @@ Confirm Password is required -->
     <div class="row shadow-lg bg-white rounded overflow-hidden m-3" style="width: 100%; max-width: 1000px;">
         <div class="col-md-6 p-0">
             <div class="position-relative h-100">
-                <img src="https://shorturl.at/Xb3CJ" class="img-fluid h-100 w-100 object-fit-cover"
+                <img src="https://tinyurl.com/mr36acjh" class="img-fluid h-100 w-100 object-fit-cover"
                     alt="Fitness Tracker">
                 <div class="position-absolute top-50 start-50 translate-middle text-center">
                     <h2 class="text-white fw-bold fitness-heading m-0">Fitness Tracker</h2>
@@ -34,8 +34,7 @@ Confirm Password is required -->
                     </div>
                     <div class="mb-4">
                         <input type="tel" id="mobile" name="mobile" [(ngModel)]="user.mobile" #mobile="ngModel"
-                            class="custom-input" placeholder="Mobile" required
-                            pattern="^[0-9]{10}$">
+                            class="custom-input" placeholder="Mobile" required pattern="^[0-9]{10}$" maxlength="10" >
                         <div class="invalid-feedback" *ngIf="(submitted || mobile.touched) && mobile.errors?.required">Mobile Number is required</div>
                         <div class="invalid-feedback" *ngIf="(submitted || mobile.touched || mobile.dirty) && mobile.errors?.pattern">Mobile number must be 10 digits</div>
                     </div>

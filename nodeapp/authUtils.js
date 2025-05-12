@@ -9,19 +9,23 @@ function generateToken(userId) {
 }
 
 // Middleware function to validate JWT token
-function validateToken(req, res, next) {
-    const token = req.header('authorization');
-    if (!token) {
-        return res.status(400).json({ message: 'Authentication failed!' });
-    }
-
-    jwt.verify(token, secretKey, (err, decoded) => {
-        if (err) {
-            return res.status(400).json({ message: 'Authentication failed!' });
+const validateToken = (req, res, next) => {
+    try {
+        const header = req.headers.authorization;
+        if (!header || !header.startsWith('Bearer ')) {
+            return res.status(400).json({ message: 'Authentication failed' });
         }
-        req.user = decoded;
-        next();
-    });
-}
+        const token = header.substring(7);
+        jwt.verify(token,secretKey, (err, decoded) => {
+            if (err) {
+                return res.status(401).json({ message: 'Invalid token' });
+            }
+            req.user = decoded;
+            next();
+        });
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
 
 module.exports = { generateToken, validateToken };
