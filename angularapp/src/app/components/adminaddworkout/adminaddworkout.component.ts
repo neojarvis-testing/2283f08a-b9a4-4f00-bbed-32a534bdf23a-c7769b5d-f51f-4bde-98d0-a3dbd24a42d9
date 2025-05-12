@@ -64,7 +64,7 @@ export class AdminaddworkoutComponent implements OnInit {
         modal.show();
       },
       error: (err) => {
-        if (err?.error?.message === '*Workout with the same name already exists') {
+        if (err?.error?.message === 'Workout with the same name already exists') {
           this.errorMessage = err.error.message;
         } else {
           this.errorMessage = 'Something went wrong';

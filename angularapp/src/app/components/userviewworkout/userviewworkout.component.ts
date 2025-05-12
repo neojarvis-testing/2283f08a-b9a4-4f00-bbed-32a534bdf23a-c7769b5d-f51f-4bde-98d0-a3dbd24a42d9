@@ -25,7 +25,6 @@ export class UserviewworkoutComponent implements OnInit {
   maxVisiblePages: number = 5;
 
 
-
   constructor(private readonly workoutService: WorkoutService,private readonly workoutRequest:WorkoutrequestService) { }
 
   ngOnInit(): void {
