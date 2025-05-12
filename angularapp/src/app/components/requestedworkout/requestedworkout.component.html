@@ -41,7 +41,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let request of paginatedRequests; let i = index">
-          <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+          <td>{{ workoutRequests.indexOf(request) + 1 }}</td>
           <td>{{ request.userId.userName }}</td>
           <td>{{ request.workoutId.workoutName }}</td>
           <td>{{ request.requestedDate | date: 'mediumDate' }}</td>

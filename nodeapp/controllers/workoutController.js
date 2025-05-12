@@ -35,7 +35,8 @@ async function getWorkoutById(req, res) {
 //Admin can add newWorkouts
 async function addWorkout(req, res) {
     try {
-       const workout = await Workout.create(req.body)
+       const workout = new Workout(req.body)
+       await workout.save()
         return res.status(200).json({message:"Workout Added Successfully",data:workout});
     } catch (error) {
         return res.status(500).json({ message: error.message });

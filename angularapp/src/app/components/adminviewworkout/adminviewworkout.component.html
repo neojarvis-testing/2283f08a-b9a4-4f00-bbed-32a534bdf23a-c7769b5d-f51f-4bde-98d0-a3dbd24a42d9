@@ -59,7 +59,7 @@
           <td [attr.colspan]="getVisibleColumnCount()">Oops! No records found</td>
         </tr>
         <tr *ngFor="let workout of paginatedWorkouts; let i = index">
-          <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+          <td>{{ workouts.indexOf(workout) + 1 }}</td>
           <td *ngIf="isColumnVisible('name')">{{ workout.workoutName }}</td>
           <td *ngIf="isColumnVisible('description')">{{ workout.description }}</td>
           <td *ngIf="isColumnVisible('difficultyLevel')">{{ workout.difficultyLevel }}</td>

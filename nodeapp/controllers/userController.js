@@ -28,8 +28,7 @@ async function getUserByEmailAndPassword(req, res) {
 // Function to register user
 async function addUser(req, res) {
     try {
-        const { userName, email, mobile, password, role } = req.body;
-        await User.create({ userName, email, mobile, password, role });
+        const user = await User.create(req.body)
         return res.status(200).json({ message: 'Success' });
     } catch (error) {
         return res.status(500).json({ message: error.message });
