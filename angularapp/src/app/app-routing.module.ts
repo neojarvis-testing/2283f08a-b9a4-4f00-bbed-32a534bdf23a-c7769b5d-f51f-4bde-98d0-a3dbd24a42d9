@@ -11,22 +11,23 @@ import { RequestedworkoutComponent } from './components/requestedworkout/request
 import { UserworkoutformComponent } from './components/userworkoutform/userworkoutform.component';
 import { UserviewworkoutComponent } from './components/userviewworkout/userviewworkout.component';
 import { UserappliedworkoutComponent } from './components/userappliedworkout/userappliedworkout.component';
+import { AuthguardGuard } from './components/authguard/authguard.guard';
+import { Authguard1Guard } from './components/authguard/authguard1.guard';
 import { AppComponent } from './app.component';
-
 
 const routes: Routes = [
   {path:'home-page',component:HomePageComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
-  {path:'adminaddworkout',component:AdminaddworkoutComponent},
-  {path:'admineditworkout/:id',component:AdmineditworkoutComponent},
-  {path:'adminviewworkout',component:AdminviewworkoutComponent},
-  {path:'requestedworkout',component:RequestedworkoutComponent},
-  {path:'userappliedworkout/:id',component:UserappliedworkoutComponent},
-  {path:'userviewworkout',component:UserviewworkoutComponent},
-  {path:'userworkoutform/:id',component:UserworkoutformComponent},
+  {path:'adminaddworkout',component:AdminaddworkoutComponent,canActivate: [Authguard1Guard]},
+  {path:'admineditworkout/:id',component:AdmineditworkoutComponent,canActivate: [Authguard1Guard]},
+  {path:'adminviewworkout',component:AdminviewworkoutComponent,canActivate: [Authguard1Guard]},
+  {path:'requestedworkout',component:RequestedworkoutComponent,canActivate: [Authguard1Guard]},
+  {path:'userappliedworkout/:id',component:UserappliedworkoutComponent,canActivate:[AuthguardGuard]},
+  {path:'userviewworkout',component:UserviewworkoutComponent,canActivate:[AuthguardGuard]},
+  {path:'userworkoutform/:id',component:UserworkoutformComponent,canActivate:[AuthguardGuard]},
   {path:'',component:AppComponent},
-  {path:'**',component: ErrorComponent}
+  {path:'**',component:ErrorComponent}
 ];
 
 @NgModule({
