@@ -22,7 +22,7 @@
 
   <div class="input-group mb-3">
     <div style="width:250px; box-shadow: 0 2px 6px rgba(0,0,0,0.3);border-radius: 5px;">
-    <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm" (input)="search()" />
+      <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm" (input)="search()" />
     </div>
     <div class="dropdown ms-2">
       <button class="btn btn-outline-secondary" type="button" data-bs-toggle="dropdown">
@@ -31,7 +31,7 @@
       <ul class="dropdown-menu p-2">
         <li *ngFor="let column of columnSettings">
           <div class="form-check">
-            <input type="checkbox" class="form-check-input " [(ngModel)]="column.visible"[id]="column.key" />
+            <input type="checkbox" class="form-check-input" [(ngModel)]="column.visible" [id]="column.key" />
             <label class="form-check-label" for="{{column.key}}">{{column.label}}</label>
           </div>
         </li>
@@ -39,40 +39,60 @@
     </div>
   </div>
 
- 
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped text-center">
+      <thead class="table-primary">
+        <tr>
+          <th>S.No</th>
+          <th *ngIf="isColumnVisible('name')">Workout Name</th>
+          <th *ngIf="isColumnVisible('description')">Description</th>
+          <th *ngIf="isColumnVisible('difficultyLevel')">Difficulty Level</th>
+          <th *ngIf="isColumnVisible('targetArea')">Target Area</th>
+          <th *ngIf="isColumnVisible('daysPerWeek')">Days Per Week</th>
+          <th *ngIf="isColumnVisible('duration')">Duration (Minutes)</th>
+          <th *ngIf="isColumnVisible('createdAt')">Created At</th>
+          <th *ngIf="isColumnVisible('action')" style="width: 150px;">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="filteredWorkouts.length === 0">
+          <td [attr.colspan]="getVisibleColumnCount()">Oops! No records found</td>
+        </tr>
+        <tr *ngFor="let workout of paginatedWorkouts; let i = index">
+          <td>{{ workouts.indexOf(workout) + 1 }}</td>
+          <td *ngIf="isColumnVisible('name')">{{ workout.workoutName }}</td>
+          <td *ngIf="isColumnVisible('description')">{{ workout.description }}</td>
+          <td *ngIf="isColumnVisible('difficultyLevel')">{{ workout.difficultyLevel }}</td>
+          <td *ngIf="isColumnVisible('targetArea')">{{ workout.targetArea }}</td>
+          <td *ngIf="isColumnVisible('daysPerWeek')">{{ workout.daysPerWeek }}</td>
+          <td *ngIf="isColumnVisible('duration')">{{ workout.averageWorkoutDurationInMinutes }}</td>
+          <td *ngIf="isColumnVisible('createdAt')">{{ workout.createdAt | date:'MM/dd/yy' }}</td>
+          <td *ngIf="isColumnVisible('action')">
+            <button class="btn btn-success btn-sm me-2" routerLink="/admineditworkout/{{workout._id}}">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="openDeleteModal(workout._id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <table class="table table-bordered table-striped text-center">
-    <thead class="table-primary">
-      <tr>
-        <th>S.No</th>
-        <th *ngIf="isColumnVisible('name')">Workout Name</th>
-        <th *ngIf="isColumnVisible('description')">Description</th>
-        <th *ngIf="isColumnVisible('difficultyLevel')">Difficulty Level</th>
-        <th *ngIf="isColumnVisible('targetArea')">Target Area</th>
-        <th *ngIf="isColumnVisible('daysPerWeek')">Days Per Week</th>
-        <th *ngIf="isColumnVisible('duration')">Duration (Minutes)</th>
-        <th *ngIf="isColumnVisible('createdAt')">Created At</th>
-        <th *ngIf="isColumnVisible('action')" style="width: 150px;">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngIf="filteredWorkouts.length === 0">
-        <td colspan="9">Oops! No records found</td>
-      </tr>
-      <tr *ngFor="let workout of filteredWorkouts; let i = index">
-        <td>{{ i + 1 }}</td>
-        <td *ngIf="isColumnVisible('name')">{{ workout.workoutName }}</td>
-        <td *ngIf="isColumnVisible('description')">{{ workout.description }}</td>
-        <td *ngIf="isColumnVisible('difficultyLevel')">{{ workout.difficultyLevel }}</td>
-        <td *ngIf="isColumnVisible('targetArea')">{{ workout.targetArea }}</td>
-        <td *ngIf="isColumnVisible('daysPerWeek')">{{ workout.daysPerWeek }}</td>
-        <td *ngIf="isColumnVisible('duration')">{{ workout.averageWorkoutDurationInMinutes }}</td>
-        <td *ngIf="isColumnVisible('createdAt')">{{ workout.createdAt | date:'MM/dd/yy' }}</td>
-        <td *ngIf="isColumnVisible('action')">
-          <button class="btn btn-success btn-sm me-2" routerLink="/admineditworkout/{{workout._id}}">Edit</button>
-          <button class="btn btn-danger btn-sm" (click)="openDeleteModal(workout._id)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="d-flex justify-content-center align-items-center">
+    <nav *ngIf="filteredWorkouts.length > 0">
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <a class="page-link" (click)="previousPage()" aria-label="Previous">
+            <span aria-hidden="true">Prev</span>
+          </a>
+        </li>
+        <li class="page-item" *ngFor="let page of getPageNumbers()" [class.active]="page === currentPage">
+          <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <a class="page-link" (click)="nextPage()" aria-label="Next">
+            <span aria-hidden="true">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </div>

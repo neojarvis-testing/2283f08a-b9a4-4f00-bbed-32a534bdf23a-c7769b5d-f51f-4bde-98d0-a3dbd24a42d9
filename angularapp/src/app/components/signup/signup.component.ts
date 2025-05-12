@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -10,6 +10,8 @@ import * as bootstrap from 'bootstrap';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
+  @ViewChild('successModal') successModal!: ElementRef;
+
   submitted = false;
   user: User = {
     userName: '',
@@ -34,7 +36,7 @@ export class SignupComponent {
   }
 
   showSuccessModal() {
-    const modal = new bootstrap.Modal(document.getElementById('successModal')!);
+    const modal = new bootstrap.Modal(this.successModal.nativeElement);
     modal.show();
   }
 }
