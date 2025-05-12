@@ -27,7 +27,7 @@
         <td colspan="9">Oops! No records found</td>
       </tr>
       <tr *ngFor="let workout of paginatedWorkouts; let i = index">
-        <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+        <td>{{ workouts.indexOf(workout) + 1 }}</td>
         <td>{{ workout.workoutName }}</td>
         <td>{{ workout.description }}</td>
         <td>{{ workout.difficultyLevel }}</td>

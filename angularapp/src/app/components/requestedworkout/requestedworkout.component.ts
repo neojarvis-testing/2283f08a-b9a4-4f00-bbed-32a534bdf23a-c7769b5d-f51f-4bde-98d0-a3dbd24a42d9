@@ -75,8 +75,11 @@ export class RequestedworkoutComponent implements OnInit {
 
   showDetails(workout: Workoutrequest): void {
     this.selectedWorkout = workout;
-    const modal = new bootstrap.Modal(document.getElementById('detailsModal')!);
-    modal.show();
+    const modalElement = document.getElementById('detailsModal');
+    if (modalElement) {
+      const modal = new bootstrap.Modal(modalElement);
+      modal.show();
+    }
   }
 
   // Pagination methods

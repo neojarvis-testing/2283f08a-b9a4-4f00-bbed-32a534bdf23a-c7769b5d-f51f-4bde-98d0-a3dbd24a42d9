@@ -19,23 +19,23 @@
 
         <form [formGroup]="workoutForm" (ngSubmit)="onSubmit()">
           <div class="form-group m-2">
-            <label>Workout Name <span class="text-danger">*</span></label>
-            <input type="text" class="form-control mt-2" formControlName="workoutName" placeholder="Workout Name" />
+            <label for="name">Workout Name <span class="text-danger">*</span></label>
+            <input id="name" type="text" class="form-control mt-2" formControlName="workoutName" placeholder="Workout Name" />
             <div *ngIf="admin.workoutName.touched && admin.workoutName.errors" class="text-danger">Workout Name is
               required</div>
           </div>
 
           <div class="form-group m-2">
-            <label>Description <span class="text-danger">*</span></label>
-            <input type="text" class="form-control mt-2" formControlName="description"
+            <label for="description">Description <span class="text-danger">*</span></label>
+            <input id="description" type="text" class="form-control mt-2" formControlName="description"
               placeholder="Workout Description" />
             <div *ngIf="admin.description.touched && admin.description.errors" class="text-danger">Description is
               required</div>
           </div>
 
           <div class="form-group m-2">
-            <label>Difficulty Level <span class="text-danger">*</span></label>
-            <input type="number" class="form-control mt-2" formControlName="difficultyLevel" min="1" max="10"
+            <label for="level">Difficulty Level <span class="text-danger">*</span></label>
+            <input id="level" type="number" class="form-control mt-2" formControlName="difficultyLevel" min="1" max="10"
               placeholder="Difficulty Level" />
             <div *ngIf="admin.difficultyLevel.touched  && admin.difficultyLevel.errors" class="text-danger">
               <div *ngIf="admin.difficultyLevel.errors['required']">Difficulty Level is required</div>
@@ -58,8 +58,8 @@
           </div>
 
           <div class="form-group m-2">
-            <label>Days Per Week <span class="text-danger">*</span></label>
-            <input type="number" class="form-control mt-2" formControlName="daysPerWeek" min="1" max="7"
+            <label for="days">Days Per Week <span class="text-danger">*</span></label>
+            <input id="days" type="number" class="form-control mt-2" formControlName="daysPerWeek" min="1" max="7"
               placeholder="Days Per Week" />
             <div *ngIf="admin.daysPerWeek.touched && admin.daysPerWeek.errors" class="text-danger">
               <div *ngIf="admin.daysPerWeek.errors['required']">Days Per Week is required</div>
@@ -68,8 +68,8 @@
           </div>
 
           <div class="form-group m-2">
-            <label>Workout Duration (Minutes) <span class="text-danger">*</span></label>
-            <input type="number" class="form-control mt-2" formControlName="averageWorkoutDurationInMinutes"
+            <label for="duration">Workout Duration (Minutes) <span class="text-danger">*</span></label>
+            <input id="duration" type="number" class="form-control mt-2" formControlName="averageWorkoutDurationInMinutes"
               placeholder="Workout Duration in Minutes" />
             <div *ngIf="admin.averageWorkoutDurationInMinutes.touched && admin.averageWorkoutDurationInMinutes.errors"
               class="text-danger">
@@ -81,7 +81,7 @@
             </div>
           </div>
 
-          <div *ngIf="errorMessage" class="text-danger text-start mb-2">{{ errorMessage }}</div>
+          <div *ngIf="errorMessage" class="text-danger text-start m-2">{{ errorMessage }}</div>
           <div class="form-group m-2">
             <button class="btn btn-primary w-100">Submit</button>
           </div>
