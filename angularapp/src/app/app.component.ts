@@ -9,7 +9,11 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'angularapp';
   currentUrl: string = ''
+<<<<<<< HEAD
   constructor(private router: Router) {
+=======
+  constructor(private readonly router: Router) {
+>>>>>>> main
   }
   ngOnInit() {
     this.router.events.subscribe(() => {
@@ -42,4 +46,9 @@ export class AppComponent implements OnInit {
         this.modalContent = 'Select a section to learn more.';
     }
   }
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> main

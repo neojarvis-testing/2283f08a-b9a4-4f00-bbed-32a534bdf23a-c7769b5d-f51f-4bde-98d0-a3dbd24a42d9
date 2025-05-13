@@ -22,7 +22,17 @@ const getWorkoutRequestById = async (req, res) => {
 };
 const addWorkoutRequest = async (req, res) => {
     try {
-        const newWorkoutRequest =  await WorkoutRequest.create(req.body)
+        let {userId,workoutId,age,bmi,gender,dietaryPreferences,medicalHistory,requestedDate,requestStatus}=req.body
+        userId=userId.toString();
+        workoutId=workoutId.toString();
+        age=parseInt(age);
+        bmi=parseInt(bmi);
+        gender=gender.toString();
+        dietaryPreferences=dietaryPreferences.toString(); 
+        medicalHistory=medicalHistory.toString(); 
+        requestedDate=requestedDate.toString(); 
+        requestStatus=requestStatus.toString(); 
+        const newWorkoutRequest =  await WorkoutRequest.create({userId,workoutId,age,bmi,gender,dietaryPreferences,medicalHistory,requestedDate,requestStatus})
         res.status(200).json({ message: 'Workout Request Added Successfully', data: newWorkoutRequest });
     } catch (error) {
         res.status(500).json({ message: error.message });
