@@ -39,11 +39,7 @@ async function addWorkout(req, res) {
         workoutName=workoutName.toString()
         const existingWorkout=await Workout.findOne({workoutName});
         if(existingWorkout){
-<<<<<<< HEAD
-            return res.status(400).json({message: 'Workout with the same name already exists'});
-=======
             return res.status(400).json({message:'*Workout with the same name already exists'});
->>>>>>> main
         }
         let {description,difficultyLevel,targetArea,daysPerWeek,averageWorkoutDurationInMinutes,createdAt}=req.body;
         description=description.toString();
