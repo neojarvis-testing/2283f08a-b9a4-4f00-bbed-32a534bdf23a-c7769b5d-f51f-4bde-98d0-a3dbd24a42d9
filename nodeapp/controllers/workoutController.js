@@ -65,7 +65,6 @@ async function updateWorkout(req, res) {
 async function deleteWorkout(req, res) {
     try {
         const deletedWorkout = await Workout.findByIdAndDelete(req.params?.id);
-        console.log(deleteWorkout);
         if (deletedWorkout) {
             return res.status(200).json({ message: 'Workout Deleted Successfully' });
         } else {
